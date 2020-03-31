@@ -1,0 +1,29 @@
+@import "mixin";
+//公用变量
+$c_width: 1200px; // 内容宽度
+$line_height: 28px; //文字描述区域行高
+$btn_padding_1: 10px; // 正常button两边的padding
+$btn_padding_2: 20px; // 比正常button两边大一点儿的padding
+
+//公用样式变量
+$blue_dark_color: #1052f5; //蓝色深色
+$blue_light_color: #24a4f9; //蓝色浅色
+
+$green_color: #00c176; //绿色   提示信息
+$red_color: #e43c52; //红色    提示信息
+$font_color: #403f68; // 一般表格字体颜色/title
+
+//设计规范  变量值
+//主色
+$main_dark_color: #101038; //用于大块的背景
+$main_red_color: #e43c52; //用于买入数据/上涨百分比/买入按钮/k线
+$main_green_color: #00c176; //用于卖出数据/下跌百分比/卖出按钮/k线
+
+//辅助色
+$less_blue_color: #1c73f6; //用于鼠标移入/当前选中/链接
+$less_dark_color: #403f68; //用于正文/大标题字体颜色
+$less_gray_color: #7b87a6; //用于选卡/小标题字体颜色
+$less_purple_color: #7979b7; //用于主要数据字体颜色
+$less_purple_color2: #525295; //用于弱化的字体颜色
+$simple_gray_color: #a8b1ca; // 描述性文字颜色
+$base_assets_url : "https://baidu.com/assets";

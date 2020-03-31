@@ -1,0 +1,32 @@
+// 统一引入相关公共样式  by lz on 20190307
+@import './base.scss';
+@import './base.hui.scss';
+@import './my.el.scss';
+
+/**
+ * 公共样式库    
+ */
+ // 字体大小
+ .fz-14{
+     font-size: 14px;
+ }
+ .fz-16{
+     font-size: 16px;
+ }
+
+ // 文本定位
+ .t-l{
+     text-align: left;
+ }
+ .t-c{
+     text-align: center;
+ }
+ .t-r{
+     text-align: right;
+ }
+ // 布局
+ .flex-content-between{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }

@@ -1,0 +1,143 @@
+// 网站基础样式   by lz on 20190307
+body,
+dl,
+dd,
+dt,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+img,
+div,
+p,
+blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+}
+
+body {
+  font: 14px/22px '\5FAE\8F6F\96C5\9ED1', '\5B8B\4F53', arial, tahoma, Srial, helvetica, sans-serif;
+  //   font: 14px/1 Open Sans,PingFang SC,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,monospace,serif;// 
+  height: 100%;
+  color: #403f68;
+  // color: #e5ebf5;  //
+}
+
+//滚动条
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #36366c;
+  border-radius: 6px;
+  height: 100px;
+}
+
+::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  background: #14143f;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #14143f;
+}
+
+
+img {
+  border: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #2d8cf0;
+}
+
+a:link {
+  color: #2d8cf0;
+}
+
+a:visited {
+  color: #2d8cf0;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0px;
+}
+
+input {
+  outline: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+}
+
+input::-webkit-input-placeholder {
+  color: #a8b1ca !important;
+}
+
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #a8b1ca !important;
+  ;
+}
+
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #a8b1ca !important;
+}
+
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #a8b1ca !important;
+}
+
+i {
+  font-style: normal;
+}
+
+//数字输入框重置
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+//去除button 固有样式
+button {
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+em {
+  font-style: normal;
+}

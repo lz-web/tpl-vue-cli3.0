@@ -1,0 +1,22 @@
+{
+    "globals": {
+        "$": false,
+        "window": false,
+        "document":false,
+        "__dirname":false,
+        "process":false,
+        "module":false,
+        "console":false,
+        "require": false
+    },
+    "strict": false,
+    "curly": true,
+    "eqeqeq": false,
+    "noarg": true,
+    "noempty": true,
+    "quotmark": "single",
+    "undef": true,
+    "unused": true,
+    "esversion": 6,
+    "asi":true
+}

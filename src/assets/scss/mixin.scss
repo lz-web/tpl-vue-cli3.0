@@ -1,0 +1,50 @@
+// 清除浮动的混合器
+@mixin clearfix() {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+// 设置超过文本宽度显示...
+@mixin text-ellipsis($width) {
+  width: $width;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+// 设置输入框placeholder的文本颜色
+@mixin placeholder-text($color){
+  &::-webkit-input-placeholder {  color:$color;  }
+  &:-moz-placeholder {  color:$color;  }
+  &::-moz-placeholder {  color:$color;  }
+  &:-ms-input-placeholder {  color:$color;  }
+}
+@mixin box-no-scroll(){
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+@mixin scroll-style($name){
+  /*滚动条样式*/
+  #{$name}::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+  }
+  #{$name}::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+  }
+  #{$name}::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+  }
+}
