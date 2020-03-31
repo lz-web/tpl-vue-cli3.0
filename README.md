@@ -16,3 +16,7 @@ npm run build_pro
 vue.config.js  增加了打包优化的配置,cdn的引入,代码的压缩...  
 axios.interface.ts 分装了axios, 实现登录与未登录可配置性接口  
 注: 引用第三方插件,确实类型定义文件时,可在@types文件夹下添加!  
+
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
