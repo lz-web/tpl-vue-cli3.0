@@ -17,7 +17,7 @@ export default class LoginVue extends Vue {
   user_pwd: string = ''; // 密码
   created() {
     //
-    console.log(this.$message) 
+    console.log(this.$echarts) 
     this.$message({
       message:'asd',
       type:'error'
@@ -30,7 +30,6 @@ export default class LoginVue extends Vue {
 
   mounted() {
     //
-  
   }
 
   // 初始化函数
