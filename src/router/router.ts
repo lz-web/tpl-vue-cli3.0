@@ -31,5 +31,16 @@ export default [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "login" */ '../views/login/login.vue')
+  },
+  {
+    path: '/user',
+    name: 'user', 
+    meta:{
+      keep_alive : false
+    },
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "user" */ '../views/user/user.vue')
   }
 ]

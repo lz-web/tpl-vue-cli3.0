@@ -1,0 +1,34 @@
+@import "@/assets/scss/variables.scss";
+
+.user-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  .aside{
+    width:230px;
+    height: 100%;
+    .el-menu{
+      border-right:0;  
+      height: 100%;
+    }
+  }
+  .header{
+    background: #EEF4F9;
+    height: 86px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    .left{
+      height:45px;
+      line-height:45px;
+      .tab-wrap{
+        padding: 20px 0 0 0;
+      }
+    }
+    .right{
+      position: relative;
+      min-width: 200px;
+    }
+  }
+}
