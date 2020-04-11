@@ -15,6 +15,7 @@ export default class LoginVue extends Vue {
   // Variablet Wrap   eg : private user_name : string = 'root';
   user_name: string = ''; // 用户名
   user_pwd: string = ''; // 密码
+  active_name: any = ''; // 当前点击tab
   created() {
     //
     console.log(this.$echarts) 
@@ -36,7 +37,9 @@ export default class LoginVue extends Vue {
   init() {
     //
   }
-
+  handleClick(v: any){
+    console.log(v.paneName)
+  }
   // 用户登录按钮
   loginSubmit(){
     this.$message({

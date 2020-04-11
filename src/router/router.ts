@@ -27,10 +27,15 @@ export default [
     meta:{
       keep_alive : false
     },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "login" */ '../views/login/login.vue')
+  },
+  {
+    path: '/evaluationSystem',
+    name: 'evaluationSystem', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "evaluationSystem" */ '../views/evaluationSystem/evaluationSystem.vue')
   },
   {
     path: '/echartsExample',
@@ -38,10 +43,7 @@ export default [
     meta:{
       keep_alive : false
     },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "login" */ '../views/echartsExample/echartsExample.vue')
+    component: () => import(/* webpackChunkName: "echartsExample" */ '../views/echartsExample/echartsExample.vue')
   },
   {
     path: "*",
