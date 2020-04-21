@@ -22,7 +22,7 @@ export default [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/login',
+    path: '/login', //  登录界面
     name: 'login', 
     meta:{
       keep_alive : false
@@ -30,12 +30,52 @@ export default [
     component: () => import(/* webpackChunkName: "login" */ '../views/login/login.vue')
   },
   {
-    path: '/evaluationSystem',
+    path: '/register/:id?', //  注册界面
+    name: 'register', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "register" */ '../views/register/register.vue')
+  },
+  {
+    path: '/index', //  首页
+    name: 'index', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "index" */ '../views/index/index.vue')
+  },
+  {
+    path: '/result', //  搜索结果页
+    name: 'result', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "result" */ '../views/result/result.vue')
+  },
+  {
+    path: '/detail/:id', //  药品详情界面
+    name: 'detail', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "result" */ '../views/detail/detail.vue')
+  },
+  {
+    path: '/evaluationSystem', // 立项评分系统
     name: 'evaluationSystem', 
     meta:{
       keep_alive : false
     },
     component: () => import(/* webpackChunkName: "evaluationSystem" */ '../views/evaluationSystem/evaluationSystem.vue')
+  },
+  {
+    path: '/evaRecord', // 立项评分系统  记录
+    name: 'evaRecord', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "evaRecord" */ '../views/evaRecord/evaRecord.vue')
   },
   {
     path: '/echartsExample',

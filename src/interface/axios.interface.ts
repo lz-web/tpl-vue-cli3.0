@@ -35,7 +35,7 @@ class HttpRequest {
                 this.destroy(url)
             }
             let { data, status } = res
-            if (status === 200 && data) { // 请求成功
+            if ((status === 200||status === 201 ) && data) { // 请求成功
                 return data
             }
             return console.error(res)
@@ -49,7 +49,11 @@ class HttpRequest {
     async request(options: AxiosRequestConfig) {
         const instance = axios.create()
         await this.interceptors(instance, options.url)
+        let headers = {
+            Authorization:  'Bearer ' + jsCookies.get('token') || ''
+        }
         instance.defaults.timeout = 30000; // 请求超时时间
+        instance.defaults.headers = headers; // 请求头
         return instance(options)
     }
 }
@@ -81,7 +85,7 @@ const Api = (() => {
     const requestList: any = notLogin
     const fun = (opts: any, nedd_token: boolean) => {
         return async (data = {}, method: Methods = "GET", responseType: String) => {
-            if (jsCookies.get('token') && nedd_token) {
+            if (!jsCookies.get('token') && nedd_token) {
                 console.error('No Token')
                 console.log(opts)
                 router.push({

@@ -1,4 +1,5 @@
 // 需要登录接口
 export default {
-    getGeetest2: { url: "/pc/v2/geetest" }, // 获取极验
+    postEvaScore: { url: "/medical/data/evaScore",method:'post' }, // eva 评分
+    getEvaRecord: { url: "/medical/data/evaRecord" }, // eva 评分
 }

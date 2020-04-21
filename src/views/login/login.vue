@@ -10,6 +10,9 @@
       <el-input autocomplete="new-password" v-model="user_name" placeholder="用户名"></el-input>
       <el-input autocomplete="new-password" placeholder="密码" v-model="user_pwd" show-password></el-input>
       <el-button @click="loginSubmit" type="primary">登录</el-button>
+      <div>
+        <router-link to="/register">注册</router-link>
+      </div>
     </div>
   </div>
 </template>

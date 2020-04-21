@@ -112,16 +112,38 @@ export default class About extends Vue {
             let no_1 = commFnc.computData(item_3.score, item_3.val, '*')
             let no_2 = commFnc.computData(item_2.val, item.val, '*')
             all_score = commFnc.computData(all_score, commFnc.computData(no_1, no_2, '*'), '+')
+            console.log(all_score && all_score)
           } else {
             message = item.key + '==>' + item_2.key + '==>' + item_3.key + message
-            // return true
+            return true
           }
         });
       });
     })
 
     if (!stu) {
-
+      // 满足条件开始提交咯
+      let obj = {
+        record_json: JSON.stringify(this.eva_arr),
+        medical_id: this.$route.query.id,
+        medical_name: this.$route.query.comName,
+        personal_score: all_score
+      }
+      // [ 'record_json','medical_id','medical_name' ]
+      Api.postEvaScore(obj).then((res: any) => {
+        if (res.code == 10000) {
+          this.$message({
+            type: 'success',
+            message: res.msg
+          })
+        } else {
+          this.$message({
+            type: 'error',
+            message: res.msg
+          })
+        }
+        console.log(res)
+      })
     } else {
       this.$message({
         type: 'error',

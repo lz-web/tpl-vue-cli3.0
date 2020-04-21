@@ -1,0 +1,22 @@
+// @import "@/assets/scss/variables.scss";
+
+.register-wrap {
+  // width: 100%;
+  .main-wrap{
+    width:700px;
+    margin: 0 auto;
+    .main-item{
+      display: flex;
+      margin: 10px 0;
+      span{
+        display:inline-block;
+        width:120px;
+        line-height: 40px;
+        text-align: right;
+      }
+    }
+  }
+  .btn-wrap{
+    text-align: center;
+  }
+}

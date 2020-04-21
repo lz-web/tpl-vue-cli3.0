@@ -19,7 +19,7 @@ if (process.env.VUE_APP_ENV === 'test') {
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    publicPath: '', // 122
+    publicPath: '/', // 122
     outputDir: dist_url,
     assetsDir: 'dist_trend', // 放置生成的静态资源路径，默认在outputDir
     indexPath: 'index.html', // 指定生成的 index.html 输入路径，默认outputDir

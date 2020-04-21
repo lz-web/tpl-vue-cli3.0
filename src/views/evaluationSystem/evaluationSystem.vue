@@ -4,7 +4,7 @@
     <p>说明:三大sad撒大所多撒所大所多大撒多所无大所无多撒大所大所所大奥所多</p>
     <p>
       <b>待评药物:</b>
-      <span>阿司匹林</span>
+      <span>{{$route.query.comName}}</span>
       <span>已有3205人进行了科学评测</span>
     </p>
     <div class="main-wrap">
