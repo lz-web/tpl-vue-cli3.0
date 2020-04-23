@@ -2,15 +2,23 @@
   <div class="headerComponent-wrap">
     <div class="hui-container container-c">
       <div class="header-left">
-        <!-- <h1>病药智能评测系统</h1> -->
-        <p>----科学专业精准</p>
+        <el-autocomplete
+          v-model="state"
+          :fetch-suggestions="querySearchAsync"
+          :clearable="true"
+          placeholder="请尝试输入需要查询的药品名称"
+          @select="handleSelect"
+        >
+          <!-- <i class="el-icon-search el-input__icon" slot="suffix" @click="handleIconClick"></i> -->
+        <!-- <img src="../../assets/img/public/icon_search.png" alt="" class="el-input__icon" slot="suffix"> -->
+        </el-autocomplete>
       </div>
       <div class="header-right">
         <div v-if="is_login">
           <el-dropdown>
             <span class="el-dropdown-link">
               {{user_info.user_phone}}
-              <i class="el-icon-arrow-down el-icon--right"></i>
+              <i class="el-icon-search el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
@@ -53,7 +61,9 @@ export default class About extends Vue {
   created() {
     //
     this.is_login = jsCookies.get("token") ? true : false;
-    this.user_info = localStorage.user_info ? JSON.parse(localStorage.user_info) : {};
+    this.user_info = localStorage.user_info
+      ? JSON.parse(localStorage.user_info)
+      : {};
     console.log();
   }
 
@@ -66,10 +76,10 @@ export default class About extends Vue {
   }
   // 退出登录
   exitLogin() {
-	console.log("退出登录");
-	jsCookies.set('token','')
-	localStorage.removeItem('user_info')
-	location.href = '/login'
+    console.log("退出登录");
+    jsCookies.set("token", "");
+    localStorage.removeItem("user_info");
+    location.href = "/login";
   }
 }
 </script>
@@ -79,13 +89,24 @@ export default class About extends Vue {
 
 .headerComponent-wrap {
   width: 100%;
-  padding: 30px 0 0 0;
-  height: 55px;
+  height: 80px;
+  background-color: #242428;
   .container-c {
     display: flex;
     justify-content: space-between;
   }
   .header-left {
+    .el-autocomplete {
+      margin-top:20px;
+      border-radius: 3px;
+      .el-input__inner {
+        color: #A5A5A5;
+        width:400px;
+        border-radius: 3px;
+        background: #3a3a41;
+        border: 0;
+      }
+    }
   }
 }
 </style>

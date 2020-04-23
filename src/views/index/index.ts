@@ -46,8 +46,8 @@ export default class About extends Vue {
       this.restaurants = []
       res.result.rows.forEach((item: any) => {
         this.restaurants.push({
-          value: item.comName,
-          id: item.id,
+          value: item.comm_name,
+          id: item.order_id,
         })
       })
     })
@@ -57,6 +57,7 @@ export default class About extends Vue {
     }, 222);
   }
   handleSelect(item: any) {
+    console.log(item)
     this.$router.push({ path: `/detail/${item.id}`})
   }
   // 搜索按钮

@@ -7,7 +7,13 @@
       :clearable="true"
       placeholder="请输入内容"
       @select="handleSelect"
-    ></el-autocomplete>
+    >
+      <i
+    class="el-icon-edit el-input__icon"
+    slot="suffix"
+    @click="handleIconClick">
+  </i>
+    </el-autocomplete>
     <el-button type="primary" @click="searchBtn">搜索</el-button>
   </div>
 </template>
