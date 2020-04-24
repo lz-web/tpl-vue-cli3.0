@@ -14,8 +14,11 @@ export default class LoginVue extends Vue {
   // @Action GET_DATA_ASYN
 
   // Variablet Wrap   eg : private user_name : string = 'root';
-  user_name: string = '18851179151'; // 用户名
-  user_pwd: string = 'li123456'; // 密码
+  user_name: string = '15751668553'; // 用户名
+  user_pwd: string = 'hui123456'; // 密码
+  user_verify_code: string | number = '1234'; // 验证码
+  remember_pwd: boolean = false;
+  account: boolean = true;
   active_name: any = 'first'; // 当前点击tab
   created() {
     //
@@ -37,6 +40,12 @@ export default class LoginVue extends Vue {
   handleClick(v: any){
     console.log(v.paneName)
   }
+
+  // 切换登录方式
+  changeLoginWay() {
+    this.account = !this.account
+  }
+
   // 用户登录按钮
   loginSubmit(){
     Api.postLogin({

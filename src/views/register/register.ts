@@ -13,18 +13,37 @@ export default class About extends Vue {
   // @Action GET_DATA_ASYN
 
   // Variablet Wrap   eg : private user_name : string = 'root';
-  user_phone: any = '18851179151';
-  user_pwd: string = 'li123456';
-  user_pwd2: string = 'li123456';
-  step_stu: number = 0;
+  qrcode: string = '';
+  user_phone: any = '15751668553';
+  user_pwd: string = 'hui123456';
+  user_pwd2: string = 'hui123456';
+  step_stu: number = 1;
   user_name: string = 'user_name';
+  user_industry: string = 'user_industry';
   user_company: string = 'user_company';
   user_class: string = 'user_class';
-  company_phone: string = '13135';
+  company_phone: string = '025-83874089';
   applay_reason: string = 'applay_reason';
-  user_question: string = '您的出生日期?';
+  user_question: string = ''; 
+  user_question_select: string = '';
+  user_question_list: object[] = [
+    {
+      value: '您的生日日期？',
+      label: '您的生日日期？'
+    }, {
+      value: '您的小学班主任姓名？',
+      label: '您的小学班主任姓名？'
+    }, {
+      value: '您的爱人生日日期？',
+      label: '您的爱人生日日期？'
+    }, {
+      value: '您的父亲生日日期？',
+      label: '您的父亲生日日期？'
+    }
+  ];
   user_question_ret: any = '';
   wx_id: any = '';
+  user_checked: boolean = true;
   created() {
     //
   }
@@ -35,14 +54,15 @@ export default class About extends Vue {
 
   mounted() {
     //
-    console.log(this.$route.params.id)
-    this.wx_id = this.$route.params.id;
+    console.log(this.$route.params.id || '')
+    this.wx_id = this.$route.params.id || '';
   }
 
   // 初始化函数
   init() {
     //
   }
+
   // 下一步
   nextBtn() {
     // 效验
@@ -76,9 +96,9 @@ export default class About extends Vue {
         user_phone: this.user_phone
       }).then((res: any) => {
         console.log(res)
-        if(res.code == 200 && !res.has_phone){
-          this.step_stu = 1;
-        }else{
+        if(res.code == 200 && !res.has_phone) {
+          this.step_stu = 2;
+        } else {
           this.$message({
             type: 'error',
             message: res.msg
@@ -99,7 +119,9 @@ export default class About extends Vue {
       company_phone:this.company_phone,
       applay_reason:this.applay_reason,
       user_question:this.user_question,
+      user_question_select:this.user_question_select,
       user_question_ret:this.user_question_ret,
+      user_checked: this.user_checked
     }).then((res: any) => {
       console.log(res)
       if (res.code == 10000) {
