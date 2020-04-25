@@ -7,6 +7,7 @@
           <el-tab-pane label="微信扫码" name="second"></el-tab-pane>
         </el-tabs>
       </div>-->
+      
       <div class="login-wrap">
         <div class="login-inner flex-col-between">
             <div class="login-cont">
