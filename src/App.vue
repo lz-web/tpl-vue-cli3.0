@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <headerComponent></headerComponent>
+    <headerComponent v-if="!$route.meta.no_header"></headerComponent>
     <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
       <router-link to="/login">login</router-link>
@@ -25,8 +25,7 @@ export default class App extends Vue {
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  font-size: 16px;
+  color: #333333;
 }
 </style>

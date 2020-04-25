@@ -1,5 +1,39 @@
 @import "@/assets/scss/variables.scss";
 
 .index-wrap {
-  // width: 100%;
+  height: 100vh;
+  background: url(../../assets/img/index/bc.png);
+
+  .index-header {
+    height: 80px;
+    text-align: right;
+    padding: 34px 90px 0 0;
+  }
+
+  .theme-wrap {
+    text-align: center;
+
+    .theme {
+      margin: 200px 0 150px 0;
+    }
+
+    .el-autocomplete {
+      img {
+        margin: 17px 14px;
+      }
+    }
+
+    .el-input--suffix .el-input__inner {
+      width: 526px;
+      height: 50px;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 1);
+      border: 1px solid rgba(255, 160, 176, 1);
+      box-shadow: 0px 3px 2px 0px rgba(227, 223, 223, 0.35);
+      font-weight: 300;
+      color: rgba(203, 174, 174, 1);
+      border-radius: 4px;
+      padding-left: 48px;
+    }
+  }
 }

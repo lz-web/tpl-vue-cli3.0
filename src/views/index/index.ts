@@ -2,9 +2,15 @@ import { Component, Vue } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
 import CONST from "@/assets/ts/comm.const" // 公共变量
 import Api from '@/interface/axios.interface'
-// import {  } from "@/components" // 组件
+import { footComponent } from "@/components" // 组件
 
-@Component({})
+import userComponent from '@c/userComponent/userComponent.vue'
+@Component({
+  components: {
+    userComponent,
+    footComponent
+  }
+})
 export default class About extends Vue {
   // Getter
   // @Getter author

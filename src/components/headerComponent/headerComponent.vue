@@ -10,32 +10,20 @@
           @select="handleSelect"
         >
           <!-- <i class="el-icon-search el-input__icon" slot="suffix" @click="handleIconClick"></i> -->
-        <!-- <img src="../../assets/img/public/icon_search.png" alt="" class="el-input__icon" slot="suffix"> -->
+          <img src="../../assets/img/bar/icon_search.png" alt slot="prefix" />
         </el-autocomplete>
       </div>
-      <div class="header-right">
-        <div v-if="is_login">
-          <el-dropdown>
-            <span class="el-dropdown-link">
-              {{user_info.user_phone}}
-              <i class="el-icon-search el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>
-                <router-link :to="{path:'/evaRecord'}">历史评测</router-link>
-              </el-dropdown-item>
-              <el-dropdown-item>
-                <span @click="exitLogin">退出登录</span>
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </div>
-        <div v-else>
-          <router-link :to="{path:'/register'}">注册</router-link>
-          <router-link :to="{path:'/login'}">登录</router-link>
+      <div class="header-right"></div>
+    </div>
+    <div class="ts-rigth">
+      <div class="ts-c">
+        <img src="../../assets/img/bar/white_bar.png" alt />
+        <div>
+          <userComponent></userComponent>
         </div>
       </div>
     </div>
+    <img class="bar-right" src="../../assets/img/bar/bar_right.png" alt />
   </div>
 </template>
 
@@ -44,10 +32,15 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import { Getter, Action } from "vuex-class";
 import CONST from "@/assets/ts/comm.const"; // 公共变量
 import jsCookies from "js-cookie";
-// import {  } from "@/components" // 组件
+import Api from "@/interface/axios.interface";
 
-@Component({})
-export default class About extends Vue {
+import userComponent from "@c/userComponent/userComponent.vue";
+@Component({
+  components: {
+    userComponent
+  }
+})
+export default class HeaderComponent extends Vue {
   // prop
   @Prop({
     required: false,
@@ -58,6 +51,15 @@ export default class About extends Vue {
   // Variablet Wrap   eg : private user_name : string = 'root';
   is_login: boolean = false;
   user_info: object = {};
+  restaurants: any = [
+    { value: "三全鲜食（北新泾店）", id: 12321 },
+    { value: "Hot honey 首尔炸鸡（仙霞路）", id: 123 },
+    { value: "新旺角茶餐厅", id: 123 },
+    { value: "泷千家(天山西路店)", id: 123 }
+  ];
+  state: any = "";
+  state1: any = "";
+  timeout: any = null;
   created() {
     //
     this.is_login = jsCookies.get("token") ? true : false;
@@ -73,6 +75,7 @@ export default class About extends Vue {
 
   mounted() {
     //
+    console.log(this.$route);
   }
   // 退出登录
   exitLogin() {
@@ -81,6 +84,28 @@ export default class About extends Vue {
     localStorage.removeItem("user_info");
     location.href = "/login";
   }
+  // 搜索按钮
+  async querySearchAsync(v: any, cb: any) {
+    await Api.getMedicalSearch({
+      value: v
+    }).then((res: any) => {
+      this.restaurants = [];
+      res.result.rows.forEach((item: any) => {
+        this.restaurants.push({
+          value: item.comm_name,
+          id: item.order_id
+        });
+      });
+    });
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      cb(this.restaurants);
+    }, 222);
+  }
+  handleSelect(item: any) {
+    console.log(item);
+    this.$router.push({ path: `/detail/${item.id}` });
+  }
 }
 </script>
 
@@ -88,6 +113,12 @@ export default class About extends Vue {
 @import "@/assets/scss/variables.scss";
 
 .headerComponent-wrap {
+  .bar-right {
+    position: absolute;
+    right: -8px;
+    top: -6px;
+  }
+  position: fixed;
   width: 100%;
   height: 80px;
   background-color: #242428;
@@ -96,16 +127,37 @@ export default class About extends Vue {
     justify-content: space-between;
   }
   .header-left {
+    z-index: 36;
     .el-autocomplete {
-      margin-top:20px;
+      margin-top: 20px;
       border-radius: 3px;
       .el-input__inner {
-        color: #A5A5A5;
-        width:400px;
-        border-radius: 3px;
+        color: #a5a5a5;
+        width: 400px;
+        border-radius: 4px 0 0 4px;
         background: #3a3a41;
+        padding-left: 48px;
         border: 0;
       }
+      img {
+        margin: 12px 14px;
+      }
+    }
+  }
+  .ts-rigth {
+    position: relative;
+    top: -30px;
+    text-align: right;
+    padding-right: 90px;
+    .ts-c {
+      display: flex;
+      justify-content: flex-end;
+      img {
+        margin-right: 100px;
+      }
+    }
+    .el-dropdown {
+      color: #fffef8;
     }
   }
 }

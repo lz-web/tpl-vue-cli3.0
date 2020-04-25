@@ -4,12 +4,15 @@ import Home from '../views/Home.vue'
 export default [
   {
     path: '/',
-    name: 'Home',
-    meta:{
-      keep_alive : false  // 是否保持缓存
-    },
-    component: Home
+    redirect: "/index"
   },
+  //   path: '/',
+  //   name: 'idnex',
+  //   meta:{
+  //     keep_alive : false  // 是否保持缓存
+  //   },
+  //   component: Home
+  // },
   {
     path: '/about',
     name: 'About',
@@ -41,7 +44,8 @@ export default [
     path: '/index', //  首页
     name: 'index', 
     meta:{
-      keep_alive : false
+      keep_alive : false,
+      no_header:true
     },
     component: () => import(/* webpackChunkName: "index" */ '../views/index/index.vue')
   },

@@ -1,26 +1,63 @@
 <template>
   <div class="detail-wrap hui-container">
-    <div>  <router-link :to="{path:'/evaluationSystem',query: {id:medical_detail.id,comName:medical_detail.comName}}">评测</router-link> <el-button type="primary" plain>下载</el-button></div>
-    <div>  </div>
+    <!-- <div>  <router-link :to="{path:'/evaluationSystem',query: {id:medical_detail.id,comName:medical_detail.comName}}">评测</router-link> <el-button type="primary" plain>下载</el-button></div>
+    <div>  </div>-->
+    <div class="title-wrap">
+      <span class="title">{{medical_detail.medical_name}}</span>
+      <span class="title-des">已有3212人&nbsp;&nbsp;&nbsp;进行测评</span>
+    </div>
+    <div class="info-wrap">
+      <p>
+        <span class="info-label">通用名称</span>
+        <span class="info-value">{{medical_detail.comm_name}}</span>
+      </p>
+      <p>
+        <span class="info-label">英文名称</span>
+        <span class="info-value">{{medical_detail.medical_name_en}}</span>
+        <span class="info-label label2">汉语拼音</span>
+        <span class="info-value">{{medical_detail.name_pingyin}}</span>
+      </p>
+      <p>
+        <span
+          class="info-label letter-spacing2"
+          v-html="'成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分'"
+        ></span>
+        <span class="info-value">{{medical_detail.ingredient}}</span>
+      </p>
+    </div>
+
+    <div class="catelog-wrap">
+      <div class="left-title">
+        目
+        <br />
+        <br />录
+      </div>
+      <div class="right-list">
+        <a
+          v-for="(item,i) in medical_type"
+          :key="i"
+          class="import-a"
+          :href="'#' + item.en"
+        >{{item.zh}}</a>
+      </div>
+    </div>
     <h1>{{medical_detail.comName}}</h1>
     <p v-html="medical_detail.adverseReactions"></p>
     <p v-html="medical_detail.dosage"></p>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <p>
-    {{medical_detail}}</p>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <p>{{medical_detail}}</p>
   </div>
 </template>
 
 <script lang="ts" src="./detail.ts"></script>
 
 <style lang="scss">
-  @import './detail.scss'
+@import "./detail.scss";
 </style>
 
