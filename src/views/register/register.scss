@@ -1,4 +1,3 @@
-// @import "@/assets/scss/variables.scss";
 @import "@/assets/scss/common.scss";
 .register-bg{
     width: 100vw;
@@ -11,46 +10,84 @@
         width: 660px;
         .register-inner {
             width: 460px;
-            height: 520px;
-            padding: 20px 100px;
+            height: 540px;
+            padding: 20px 100px 0;
             background:#fff;
             box-shadow: 0px 4px 20px 0px rgba(146,145,145,0.2);
             border-radius: 2px;
+
             .register-title {
                 position: relative;
-                margin: 20px 0;
-                height:20px;
-                font-size: 20px;
+                margin: 20px 0 0;
+                height: 20px;
                 text-align: center;
+                .register-title-cont {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    font-size: 20px;
+                }
                 .to-login {
                     position: absolute;
+                    bottom: 0;
                     right: 88px;
+                    height: 12px;
+                    line-height: 12px;
                     font-size: 12px;
                     color: #999;
                     cursor: pointer;
                 }
             }
-            .main-wrap{
-                margin: 0 auto;
-                .main-item {
-                    display: flex;
-                    margin: 20px 0;
-                    height: 48px;
-                    .ts-input {
+
+            .register-info {
+                height: auto;
+                .main-wrap{
+                    margin: 0 auto;
+                    .qrcode-bind {
                         width: 100%;
+                        .qrcode-title {
+                            margin-top: 14px;
+                            height: 14px;
+                            line-height: 14px;
+                            font-size: 14px;
+                            color: #999;
+                        }
+                        .qrcode-inner {
+                            box-sizing: border-box;
+                            margin-top: 60px;
+                            width: 220px;
+                            height: 220px;
+                            border:1px solid #DDD;
+                            .qrcode-cont {
+                                width: 200px;
+                                height: 200px;
+                            }
+                        }
+                    }
+                    .main-item {
+                        display: flex;
+                        margin: 20px 0;
                         height: 48px;
+                        .ts-input {
+                            width: 100%;
+                            height: 48px;
+                        }
+                    }
+                    .main-item:first-child {
+                        margin-top: 40px;
                     }
                 }
             }
-            .btn-wrap{
+            
+            .register-button{
                 .ts-input {
                     width: 100%;
                     height: 48px;
                 }
-            }
-            .register-checkbox {
-                margin: 10px 0;
-                padding-left: 5px;
+                .register-checkbox {
+                    margin: 14px 0 36px;
+                    padding-left: 5px;
+                }
             }
         }
     }
