@@ -28,30 +28,35 @@
 
     <div class="catelog-wrap">
       <div class="left-title">
-        目
-        <br />
-        <br />录
+        <div class="middle">目</div>
+        <div>录</div>
       </div>
-      <div class="right-list">
-        <a
-          v-for="(item,i) in medical_type"
-          :key="i"
-          class="import-a"
-          :href="'#' + item.en"
-        >{{item.zh}}</a>
+      <div class="right-wrap">
+        <div class="right-list">
+          <a
+            v-for="(item,i) in medical_type"
+            :key="i"
+            class="import-a"
+            :href="'#' + item.en"
+          >{{item.zh}}</a>
+        </div>
+        <div class="right-list">
+          <a v-for="(item,i) in medical_type2" :key="i" :href="'#' + item.en">{{item.zh}}</a>
+        </div>
       </div>
     </div>
-    <h1>{{medical_detail.comName}}</h1>
-    <p v-html="medical_detail.adverseReactions"></p>
-    <p v-html="medical_detail.dosage"></p>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <p>{{medical_detail}}</p>
+    <div class="detail-c">
+      <div  v-for="(item,i) in medical_type_all" :key="i" :id="`#${item.en}`" class="detail-item"> 
+        <div class="line"></div>
+        <span class="line-left">
+          <img src="../../assets/img/detail/mark.png" alt s />
+            <span class="title fz-18">{{item.zh}}</span>
+        </span>
+        <p class="item-des">
+          {{medical_detail[item.en] || '无'}}
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 

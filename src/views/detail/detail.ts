@@ -14,6 +14,7 @@ export default class About extends Vue {
 
   // Variablet Wrap   eg : private user_name : string = 'root';
   medical_detail : any = {}; // 药品详情 
+  medical_type_all: any[] = [];
   medical_type2 : any[] = [
     {
       zh:'性状',
@@ -89,7 +90,8 @@ export default class About extends Vue {
 
   mounted() {
     //
-    this.getMedicalDetail()
+    this.getMedicalDetail();
+    this.medical_type_all = [...this.medical_type,...this.medical_type2]
   }
 
   // 初始化函数
