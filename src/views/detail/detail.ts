@@ -1,4 +1,4 @@
-import { Component, Vue } from "vue-property-decorator"
+import { Component, Vue, Watch } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
 import CONST from "@/assets/ts/comm.const" // 公共变量
 import Api from '@/interface/axios.interface'
@@ -8,7 +8,11 @@ import Api from '@/interface/axios.interface'
 export default class About extends Vue {
   // Getter
   // @Getter author
-  
+  @Watch('$route')
+  onChildChanged(val: string, oldVal: string) {
+    this.init()
+  }
+
   // Action
   // @Action GET_DATA_ASYN
 
@@ -90,13 +94,14 @@ export default class About extends Vue {
 
   mounted() {
     //
-    this.getMedicalDetail();
-    this.medical_type_all = [...this.medical_type,...this.medical_type2]
+    this.init()
   }
 
   // 初始化函数
   init() {
     //
+    this.getMedicalDetail();
+    this.medical_type_all = [...this.medical_type,...this.medical_type2]
   }
   getMedicalDetail(){
     Api.getMedicalDetail({
@@ -107,5 +112,11 @@ export default class About extends Vue {
       }
       console.log(res)
     })
+  }
+  goScroll(ele: any){
+    let id:any = document.getElementById(ele);
+    let scroll: any = this.$refs[ele];
+    // id.scrollIntoView(250)
+    document.documentElement.scrollTop = id.offsetTop - 33
   }
 }

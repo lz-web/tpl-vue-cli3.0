@@ -107,6 +107,7 @@ export default class HeaderComponent extends Vue {
   handleSelect(item: any) {
     console.log(item);
     this.$router.push({ path: `/detail/${item.id}` });
+    this.state = '';
   }
 }
 </script>
