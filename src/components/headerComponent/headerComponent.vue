@@ -17,7 +17,9 @@
     </div>
     <div class="ts-rigth">
       <div class="ts-c">
-        <img src="../../assets/img/bar/white_bar.png" alt />
+        <router-link :to="{path:'/index'}">
+          <img src="../../assets/img/bar/white_bar.png" alt />
+        </router-link>
         <div>
           <userComponent></userComponent>
         </div>
