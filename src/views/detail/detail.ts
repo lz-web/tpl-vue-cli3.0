@@ -117,6 +117,6 @@ export default class About extends Vue {
     let id:any = document.getElementById(ele);
     let scroll: any = this.$refs[ele];
     // id.scrollIntoView(250)
-    document.documentElement.scrollTop = id.offsetTop - 33
+    document.documentElement.scrollTop = id.offsetTop - 100
   }
 }
