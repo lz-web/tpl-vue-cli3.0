@@ -14,7 +14,9 @@
       <p>
         <span class="info-label">英文名称</span>
         <span class="info-value">{{medical_detail.medical_name_en}}</span>
-        <span class="info-label label2">汉语拼音</span>
+      </p>
+      <p>
+        <span class="info-label">汉语拼音</span>
         <span class="info-value">{{medical_detail.name_pingyin}}</span>
       </p>
       <p>
