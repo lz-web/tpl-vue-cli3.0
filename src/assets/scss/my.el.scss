@@ -1,2 +1,12 @@
-//需要修改的elementUI自带样式    by lz on 20190307
-
+// 需要修改的elementUI自带样式    by lz on 20190307
+// el-input 输入框颜色、宽度、聚焦时边框颜色
+.register-wrap ::v-deep input {
+    height: 48px !important;
+    border: 1px solid #DDD !important;
+    color: #666 !important;
+}
+// ::v-deep .el-input__inner {
+//     height: 48px !important;
+//     border: 1px solid #DDD !important;
+//     color: #666 !important;
+// }

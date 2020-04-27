@@ -1,35 +1,159 @@
 // 统一引入相关公共样式  by lz on 20190307
-@import './base.scss';
-@import './base.hui.scss';
-@import './my.el.scss';
+@import "./base.scss";
+@import "./base.hui.scss";
+@import "./my.el.scss";
 
 /**
  * 公共样式库    
  */
- // 字体大小
- .fz-14{
-     font-size: 14px;
- }
- .fz-16{
-     font-size: 16px;
- }
- .fz-18{
-     font-size: 16px;
- }
+// 字体大小
+.fz-14 {
+    font-size: 14px;
+}
+.fz-16 {
+    font-size: 16px;
+}
+.fz-18{
+    font-size: 18px;
+}
 
- // 文本定位
- .t-l{
-     text-align: left;
- }
- .t-c{
-     text-align: center;
- }
- .t-r{
-     text-align: right;
- }
- // 布局
- .flex-content-between{
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
- }
+// 文本定位
+.t-l {
+    text-align: left;
+}
+.t-c {
+    text-align: center;
+}
+.t-r {
+    text-align: right;
+}
+// 布局
+.flex-content-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+// from lol-miniprogram  by hyj
+
+.flex-wrap-col {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-center1 {
+    display: flex;
+    justify-content: center;
+}
+.flex-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flex-start-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.flex-start1 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-col-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flex-col-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col-center-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.flex-col-center-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.flex-col-around-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-col-around-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.flex-wrap-around {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.flex-wrap-start {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex1 {
+    flex: auto;
+}

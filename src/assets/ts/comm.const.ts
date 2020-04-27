@@ -9,7 +9,7 @@ const CONST = {
     is_debugger: true, // 是否开启debugger开发者模式
     public_key: '', // 公共key
     des_key: '', // des 加密公钥
-    // api_url: 'http://localhost:9999' // 接口请求地址
+    // api_url: 'http://192.168.70.5:5000' // 接口请求地址
     api_url: 'http://120.25.72.146:9999' // 接口请求地址
 }
 
