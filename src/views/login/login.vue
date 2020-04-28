@@ -39,7 +39,7 @@
                                 <span class="forget-pwd" @click="forgetPwd">忘记密码</span>
                             </div>
                             <div class="main-item">
-                                <el-button class="ts-input" @click="loginSubmit" type="primary">登录</el-button>
+                                <el-button class="ts-input login" @click="loginSubmit" type="primary">登录</el-button>
                             </div>
                         </div>
                         <!-- 微信扫码登录 -->
