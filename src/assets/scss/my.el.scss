@@ -5,6 +5,21 @@
     border: 1px solid #DDD !important;
     color: #666 !important;
 }
+
+.el-radio.is-checked {
+    .el-radio__inner {
+        border-color: #E4203A;
+        background: #E4203A;
+    }
+
+    .el-radio__label {
+        color: #E4203A;
+    }
+}
+// 分页默认统一居中
+.el-pagination{
+    text-align:center
+  }
 // ::v-deep .el-input__inner {
 //     height: 48px !important;
 //     border: 1px solid #DDD !important;

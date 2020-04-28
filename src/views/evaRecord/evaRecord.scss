@@ -2,4 +2,32 @@
 
 .evaRecord-wrap {
   // width: 100%;
+  margin-top: 80px;
+
+  .title {
+    font-size: 32px;
+    font-weight: 600;
+    padding: 80px 0 20px 0;
+  }
+
+  .el-table {
+    th.is-leaf,
+    td {
+      text-align: center;
+      height: 48px;
+      line-height: 48px;
+      padding: 0;
+    }
+
+    th.is-leaf {
+      background-color: #F9F9F9;
+
+      .cell {
+        line-height: 48px;
+      }
+    }
+  }
+  .el-pagination{
+    margin-top: 40px;
+  }
 }

@@ -19,14 +19,8 @@ export default class About extends Vue {
   // @Action GET_DATA_ASYN
 
   // Variablet Wrap   eg : private user_name : string = 'root';
-  restaurants: any = [
-    { "value": "三全鲜食（北新泾店）", id: 12321 },
-    { "value": "Hot honey 首尔炸鸡（仙霞路）", id: 123 },
-    { "value": "新旺角茶餐厅", "id": 123 },
-    { "value": "泷千家(天山西路店)", id: 123 }
-  ]
+  restaurants: any = [];
   state: any = ''
-  state1: any = ''
   timeout: any = null
   created() {
     //

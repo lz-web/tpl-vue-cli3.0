@@ -28,18 +28,17 @@
           </div>
         </div>
       </div>
+      <img class="bar-right" src="../../assets/img/bar/bar_right.png" alt />
     </div>
     <div class="headerComponent-img hui-container">
       <router-link :to="{path:'/index'}">
         <img
           v-if="need_login != 'login' && need_login != 'register'"
-          class="bar-right"
           src="../../assets/img/bar/white_bar.png"
           alt
         />
         <img
           v-if="need_login == 'login' || need_login == 'register'"
-          class="bar-right"
           src="../../assets/img/public/header_right.png"
           alt
         />
@@ -119,6 +118,7 @@ export default class HeaderComponent extends Vue {
 
 .headerComponent-wrap {
   position: fixed;
+  top: 0;
   width: 100%;
   height: 80px;
   z-index: 66;
@@ -131,12 +131,15 @@ export default class HeaderComponent extends Vue {
     box-shadow: 0px 5px 10px 0px rgba(97, 95, 95, 0.22);
     opacity: 0.11;
   }
+  .bar-right {
+    position: absolute;
+    top: -6px;
+    right: -7px;
+  }
   .headerComponent-img {
     position: relative;
     text-align: right;
     top: -51px;
-    .bar-right {
-    }
   }
   .container-c {
     display: flex;

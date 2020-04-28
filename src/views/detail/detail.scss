@@ -35,7 +35,7 @@
     .info-label {
       color: #999999;
       margin-right: 28px;
-      line-height: 33px;
+      line-height: $line_height;
     }
 
     .label2 {
@@ -74,7 +74,7 @@
 
       a {
         width: 168px;
-        line-height: 35px;
+        line-height: $line_height;
 
       }
 

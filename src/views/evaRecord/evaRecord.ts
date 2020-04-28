@@ -14,9 +14,10 @@ export default class About extends Vue {
 
   // Variablet Wrap   eg : private user_name : string = 'root';
   record_list: any[] = [];
+  page_obj: object = {};
   created() {
     //
-    this.getEvaRecord()
+    this.getEvaRecord(1)
   }
   
   activated() {
@@ -31,10 +32,13 @@ export default class About extends Vue {
   init() {
     //
   }
-  getEvaRecord(){
-    Api.getEvaRecord().then((res: any) => {
+  getEvaRecord(page:number){
+    Api.getEvaRecord({
+      page_no:page
+    }).then((res: any) => {
       if (res.code == 10000) {
-        this.record_list = res.result.rows;
+        this.page_obj = res.result
+        this.record_list = res.result.rows
         this.$message({
           type: 'success',
           message: res.msg
@@ -47,5 +51,9 @@ export default class About extends Vue {
       }
       console.log(res)
     })
+  }
+  // 分页点击事件
+  pageChange(page:number){
+    this.getEvaRecord(page)
   }
 }

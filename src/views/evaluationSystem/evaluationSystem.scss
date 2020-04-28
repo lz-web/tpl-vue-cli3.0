@@ -1,5 +1,136 @@
 @import "@/assets/scss/variables.scss";
 
-.evaluationSystem-wrap {   
-  line-height: 28px;
+.evaluationSystem-wrap {
+  line-height: $line_height;
+
+  .eva-top {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    padding-top: 130px;
+    height: 250px;
+    background-color: #242428;
+
+    .eva-btn {
+      margin-left: -77px;
+    }
+
+    .eva-font {
+      font-size: 20px;
+      color: #FFFFFF;
+    }
+
+    .eva-font2 {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .earth-wrap {
+      text-align: right;
+      margin-top: -55px;
+    }
+  }
+
+  .eva-top2 {
+    height: 150px;
+    padding-top: 100px;
+
+    .eva-btn {
+      margin: -2px -77px 0 0;
+    }
+
+    .earth-wrap {
+      margin-top: -174px;
+    }
+  }
+
+  .main-wrap.main-wrap-scroll {
+    .el-tabs__header {
+      top: 209px !important;
+    }
+  }
+
+  .main-wrap {
+    margin-top: -41px;
+
+    .el-tabs--border-card {
+      border: 0;
+      box-shadow: unset;
+      background: unset;
+
+      .el-tabs__header {
+        width: 580px;
+        background: unset;
+        border: 0;
+        position: fixed;
+        top: 339px;
+        z-index: 20;
+
+        .el-tabs__nav {
+          background: #3A3A40;
+          border: 1px solid #56565D;
+          border-bottom: 0;
+          border-radius: 4px 4px 0 0;
+
+          .el-tabs__item {
+            width: 120px;
+            border: 1px solid #56565D;
+
+            background: #3A3A40;
+            border-bottom: 0;
+            font-size: 16px;
+            text-align: center;
+
+            &.is-active {
+              height: 41px;
+              color: #E4203A;
+              border-top: 2px solid #E4203A;
+              background-color: #fff;
+            }
+
+            &:nth-child(1) {
+              border-radius: 4px 0 0 0;
+            }
+
+            &:nth-child(4) {
+              width: 190px;
+              border-radius: 0 4px 0 0;
+            }
+          }
+        }
+      }
+
+      .el-tabs__content {
+        margin-top: 440px;
+      }
+    }
+
+    .list-wrap {
+      .list-item {
+        margin: 30px 0;
+
+        .hui-des-color {
+          margin: 30px 0;
+        }
+
+        .title {
+          padding: 0 20px 0 0;
+          background-color: #fff;
+          color: #E91A35;
+          font-weight: 400;
+          margin-bottom: 30px;
+        }
+
+        .choose-wrap {
+          padding: 0 40px;
+        }
+
+        .dashed {
+          margin-bottom: -19px;
+          border-top: 1px dashed #EFD9DB;
+        }
+      }
+    }
+  }
 }

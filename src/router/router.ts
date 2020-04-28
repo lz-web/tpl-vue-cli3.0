@@ -66,7 +66,7 @@ export default [
     component: () => import(/* webpackChunkName: "result" */ '../views/detail/detail.vue')
   },
   {
-    path: '/evaluationSystem', // 立项评分系统
+    path: '/evaluationSystem/:id', // 立项评分系统
     name: 'evaluationSystem', 
     meta:{
       keep_alive : false
