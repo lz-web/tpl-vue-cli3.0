@@ -1,6 +1,6 @@
 <template>
     <div class="register-bg">
-        <div class="hui-container flex-col-end">
+        <div class="hui-container flex-col-end ">
             <div class="register-wrap">
                 <!-- 步骤条 -->
                 <div class="steps flex-center">
@@ -15,7 +15,7 @@
                     </div>
 
                     <!-- 注册步骤 -->
-                    <div class="register-info">
+                    <div class="register-info flex1">
                         <!-- 第一步 微信扫码绑定 -->
                         <div v-show="step_stu == 0" class="main-wrap">
                             <div class="qrcode-bind flex-col-center">
