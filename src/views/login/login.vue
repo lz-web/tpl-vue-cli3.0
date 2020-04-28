@@ -58,16 +58,16 @@
                 
                 <!-- 忘记密码 重置密码 -->
                 <div v-show="show_set_pwd" class="pwd-inner flex-col-between">
-                    <div v-show="forget" class="forget-pwd-cont flex-col-between">
-                        <div class="flex-col">
-                            <span class="forget-pwd-title">忘记密码</span>
+                    <div v-show="forget" class="pwd-cont flex-col-between">
+                        <span class="pwd-title flex-center">忘记密码</span>
+                        <div class="flex-col flex1">
                             <el-input
                                 class="ts-input"
                                 autocomplete="new-password"
                                 v-model="user_phone"
                                 placeholder="请输入用户名"
                                 ></el-input>
-                            <span>密保问题：{{}}</span>
+                            <span class="question-title">密保问题：{{}}</span>
                             <el-date-picker
                                 class="ts-input"
                                 v-model="user_question_ret"
@@ -77,18 +77,18 @@
                                 ></el-date-picker>
                         </div>
                         <div class="flex-start">
-                            <el-button class="ts-input" @click="cancel()" type="primary">取消</el-button>
-                            <el-button class="ts-input" @click="commit()" type="primary">提交</el-button>
+                            <el-button class="cancel" @click="cancel()" type="primary">取消</el-button>
+                            <el-button class="commit flex1" @click="commit()" type="primary">提交</el-button>
                         </div>
                     </div>
-                    <div v-show="!forget" class="set-pwd-cont flex-col-between">
-                        <div class="flex-col">
-                            <span class="forget-pwd-title">重置密码</span>
+                    <div v-show="!forget" class="pwd-cont flex-col-between">
+                        <span class="pwd-title flex-center">重置密码</span>
+                        <div class="flex-col flex1">
                             <el-input class="ts-input" v-model="user_pwd_set" placeholder="请输入新密码，至少6位，不包含特殊字符"></el-input>
                             <el-input class="ts-input" v-model="user_pwd_set2" placeholder="请再次输入密码"></el-input>
                         </div>
                         <div>
-                            <el-button class="ts-input" @click="confirm()" type="primary">提交</el-button>
+                            <el-button class="confirm" @click="confirm()" type="primary">提交</el-button>
                         </div>
                     </div>
                 </div>
