@@ -1,31 +1,50 @@
 <template>
   <div class="headerComponent-wrap">
-    <div class="hui-container container-c">
-      <div class="header-left">
-        <el-autocomplete
-          v-model="state"
-          :fetch-suggestions="querySearchAsync"
-          :clearable="true"
-          placeholder="请尝试输入需要查询的药品名称"
-          @select="handleSelect"
-        >
-          <!-- <i class="el-icon-search el-input__icon" slot="suffix" @click="handleIconClick"></i> -->
-          <img src="../../assets/img/bar/icon_search.png" alt slot="prefix" />
-        </el-autocomplete>
+    <div
+      :class="[(need_login != 'login' && need_login != 'register') ? 'headerComponent-c' : 'headerComponent-c2']"
+    >
+      <div
+        v-if="need_login != 'login' && need_login != 'register'"
+        class="hui-container container-c"
+      >
+        <div class="header-left">
+          <el-autocomplete
+            v-model="state"
+            :fetch-suggestions="querySearchAsync"
+            :clearable="true"
+            placeholder="请尝试输入需要查询的药品名称"
+            @select="handleSelect"
+          >
+            <!-- <i class="el-icon-search el-input__icon" slot="suffix" @click="handleIconClick"></i> -->
+            <img src="../../assets/img/bar/icon_search.png" alt slot="prefix" />
+          </el-autocomplete>
+        </div>
+        <div class="header-right"></div>
       </div>
-      <div class="header-right"></div>
-    </div>
-    <div class="ts-rigth">
-      <div class="ts-c">
-        <router-link :to="{path:'/index'}">
-          <img src="../../assets/img/bar/white_bar.png" alt />
-        </router-link>
-        <div>
-          <userComponent></userComponent>
+      <div v-if="need_login != 'login' && need_login != 'register'" class="ts-rigth">
+        <div class="ts-c">
+          <div>
+            <userComponent></userComponent>
+          </div>
         </div>
       </div>
     </div>
-    <img class="bar-right" src="../../assets/img/bar/bar_right.png" alt />
+    <div class="headerComponent-img hui-container">
+      <router-link :to="{path:'/index'}">
+        <img
+          v-if="need_login != 'login' && need_login != 'register'"
+          class="bar-right"
+          src="../../assets/img/bar/white_bar.png"
+          alt
+        />
+        <img
+          v-if="need_login == 'login' || need_login == 'register'"
+          class="bar-right"
+          src="../../assets/img/public/header_right.png"
+          alt
+        />
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -48,27 +67,16 @@ export default class HeaderComponent extends Vue {
     required: false,
     default: ""
   })
-  name!: string;
+  need_login!: any;
 
   // Variablet Wrap   eg : private user_name : string = 'root';
-  is_login: boolean = false;
-  user_info: object = {};
-  restaurants: any = [
-    { value: "三全鲜食（北新泾店）", id: 12321 },
-    { value: "Hot honey 首尔炸鸡（仙霞路）", id: 123 },
-    { value: "新旺角茶餐厅", id: 123 },
-    { value: "泷千家(天山西路店)", id: 123 }
-  ];
-  state: any = "";
-  state1: any = "";
-  timeout: any = null;
+  user_info: object = {}; // 用户信息
+  restaurants: any[] = []; // 列表数据
+  state: any = ""; // 输入框绑定值
+  timeout: any = null; // 定时器
+  is_need_login: boolean = false; // 是否需要登录的界面
   created() {
     //
-    this.is_login = jsCookies.get("token") ? true : false;
-    this.user_info = localStorage.user_info
-      ? JSON.parse(localStorage.user_info)
-      : {};
-    console.log();
   }
 
   activated() {
@@ -77,14 +85,8 @@ export default class HeaderComponent extends Vue {
 
   mounted() {
     //
-    console.log(this.$route);
-  }
-  // 退出登录
-  exitLogin() {
-    console.log("退出登录");
-    jsCookies.set("token", "");
-    localStorage.removeItem("user_info");
-    location.href = "/login";
+    // this.is_need_login = (this.$route.name != 'login' && this.$route.name != 'register')
+    console.log(this.need_login);
   }
   // 搜索按钮
   async querySearchAsync(v: any, cb: any) {
@@ -107,7 +109,7 @@ export default class HeaderComponent extends Vue {
   handleSelect(item: any) {
     console.log(item);
     this.$router.push({ path: `/detail/${item.id}` });
-    this.state = '';
+    this.state = "";
   }
 }
 </script>
@@ -116,15 +118,26 @@ export default class HeaderComponent extends Vue {
 @import "@/assets/scss/variables.scss";
 
 .headerComponent-wrap {
-  .bar-right {
-    position: absolute;
-    right: -8px;
-    top: -6px;
-  }
   position: fixed;
   width: 100%;
   height: 80px;
-  background-color: #242428;
+  z-index: 66;
+  .headerComponent-c {
+    background-color: #242428;
+  }
+  .headerComponent-c2 {
+    height: 100%;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 5px 10px 0px rgba(97, 95, 95, 0.22);
+    opacity: 0.11;
+  }
+  .headerComponent-img {
+    position: relative;
+    text-align: right;
+    top: -51px;
+    .bar-right {
+    }
+  }
   .container-c {
     display: flex;
     justify-content: space-between;

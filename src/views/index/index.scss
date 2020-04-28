@@ -3,15 +3,24 @@
 .index-wrap {
   height: 100vh;
   background: url(../../assets/img/index/bc.png);
-  position: relative;
+  // position: relative;
+
   .index-header {
     height: 80px;
     text-align: right;
-    padding: 34px 90px 0 0;
+    background-color: #F6F6F6;
+    z-index: 22;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    .index-c {
+      padding: 30px 90px 0 0;
+    }
   }
 
   .theme-wrap {
-    text-align: center;    
+    text-align: center;
     position: relative;
     top: 50%;
     margin-top: -220px;

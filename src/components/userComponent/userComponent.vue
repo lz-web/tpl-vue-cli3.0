@@ -1,6 +1,6 @@
 <template>
   <div class="userComponent-wrap">
-    <el-dropdown>
+    <el-dropdown v-if="is_login">
       <span class="el-dropdown-link">
         {{user_info.user_phone}}
         <i class="el-icon-caret-bottom el-icon--right"></i>
@@ -14,6 +14,10 @@
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
+    <div class="not-login" v-else>
+      <router-link :to="{path:'/login'}">登录</router-link>丨
+      <router-link :to="{path:'/register'}">注册</router-link>
+    </div>
   </div>
 </template>
 
@@ -99,6 +103,11 @@ export default class About extends Vue {
 
 .userComponent-wrap {
   width: 100%;
+  .not-login {
+    a {
+      color: #666;
+    }
+  }
 }
 </style>
 

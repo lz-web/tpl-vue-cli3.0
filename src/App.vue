@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <headerComponent v-if="!$route.meta.no_header"></headerComponent>
+    <headerComponent v-if="!$route.meta.no_header" :need_login="$route.name"></headerComponent>
     <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
       <router-link to="/login">login</router-link>

@@ -2,6 +2,7 @@
   <div class="detail-wrap hui-container">
     <!-- <div>  <router-link :to="{path:'/evaluationSystem',query: {id:medical_detail.id,comName:medical_detail.comName}}">评测</router-link> <el-button type="primary" plain>下载</el-button></div>
     <div>  </div>-->
+    <img @click="$router.push({ path: '/evaluationSystem'})" class="eva-btn" src="../../assets/img/detail/eva_btn.png" alt="">
     <div class="title-wrap">
       <span class="title">{{medical_detail.medical_name || '--'}}</span>
       <span class="title-des">已有3212人&nbsp;&nbsp;&nbsp;进行测评</span>
