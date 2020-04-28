@@ -34,6 +34,14 @@
                         .ts-input {
                             width: 100%;
                             height: 48px;
+                            .el-input__inner {
+                                height: 48px;
+                                border: 1px solid #DDD;
+                                color: #666;
+                            }
+                            .el-input__inner:focus {
+                                border: 1px solid #FA574B;
+                            }
                         }
                         .login {
                             height: 48px;
@@ -134,12 +142,14 @@
                 .cancel {
                     width: 96px;
                     height: 48px;
+                    font-size:18px;
                     color: #999;
                     background-color: transparent;
                     border: 1px solid #CCC;
                 }
                 .commit {
                     height: 48px;
+                    font-size:18px;
                     color: #FFF;
                     background-color: #DC3023;
                     border: 1px solid #DC3023;
@@ -150,6 +160,7 @@
                 .confirm {
                     width: 100%;
                     height: 48px;
+                    font-size:18px;
                     color: #FFF;
                     background-color: #DC3023;
                     border: 1px solid #DC3023;
