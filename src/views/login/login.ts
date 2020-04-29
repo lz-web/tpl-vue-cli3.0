@@ -4,6 +4,7 @@ import { Getter, Action } from "vuex-class"
 // import {  } from "@/components" // 组件
 import Api from '../../interface/axios.interface';
 import jsCookies from 'js-cookie'
+import { dateFilter } from '@/assets/ts/comm.filter';
 
 @Component({})
 export default class LoginVue extends Vue {
@@ -100,10 +101,29 @@ export default class LoginVue extends Vue {
                 message: '密保问题答案不能为空!'
             })
             // return
+        } else {
+
+            Api.putfindPwd({
+                user_phone: this.user_phone,
+                user_question_ret: dateFilter(this.user_question_ret, 'yyyy-MM-dd'),
+            }).then((res: any) => {
+                if (res.code == 10000) {
+
+                    this.forget = false
+                    this.$message({
+                        type: 'success',
+                        message: res.msg
+                    })
+                } else {
+                    this.$message({
+                        type: 'error',
+                        message: res.msg
+                    })
+                }
+                console.log(res)
+            })
         }
         // 验证密保答案
-
-        this.forget = false
     }
 
     // 确定(重置密码)
@@ -129,14 +149,19 @@ export default class LoginVue extends Vue {
             })
             return
         }
-        Api.changePassword({
+        Api.putfindPwd({
             user_phone: this.user_phone,
-            user_pwd_set: this.user_pwd_set
+            user_pwd: this.user_pwd_set,
+            user_question_ret: dateFilter(this.user_question_ret,'yyyy-MM-dd')
         }).then((res: any) => {
             console.log(res)
-            if (res.code == 200) {
+            if (res.code == 10000) {
                 this.show_set_pwd = false
                 this.forget = true
+                this.$message({
+                    type: 'success',
+                    message: res.msg
+                })
             } else {
                 this.$message({
                     type: 'error',

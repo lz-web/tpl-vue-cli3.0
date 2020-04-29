@@ -6,4 +6,5 @@ export default {
     getMedicalSearch: { url: "/medical/data/search" }, // 获取药品列表数据
     getMedicalDetail: { url: "/medical/data/search" }, // 获取药品详情
     getEvaluation: { url: "/medical/data/evaluation" }, // 获取eva信息
+    putfindPwd: { url: "/medical/user/findPwd",method:'put' }, // 获取eva信息
 }

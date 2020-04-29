@@ -1,6 +1,7 @@
 import { Component, Vue } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
 import CONST from "@/assets/ts/comm.const" // 公共变量
+import { dateFilter } from "@/assets/ts/comm.filter" // 公共变量
 import Api from '@/interface/axios.interface';
 // import {  } from "@/components" // 组件
 
@@ -138,9 +139,9 @@ export default class About extends Vue {
             user_class: this.user_class,
             company_phone: this.company_phone,
             applay_reason: this.applay_reason,
-            user_question: this.user_question,
-            user_question_select: this.user_question_select,
-            user_question_ret: this.user_question_ret,
+            user_question: this.user_question_select,
+            // user_question_select: this.user_question_select,
+            user_question_ret: dateFilter(this.user_question_ret,'yyyy-MM-dd'),
             user_checked: this.user_checked
         }).then((res: any) => {
             console.log(res)

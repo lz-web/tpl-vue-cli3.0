@@ -4,6 +4,7 @@ import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 import CONST from '@/assets/ts/comm.const'
 import jsCookies from 'js-cookie'
 import router from '@/router'
+import { Message } from 'element-ui'
 
 
 declare type Methods = "GET" | "OPTIONS" | "HEAD" | "POST" | "PUT" | "DELETE" | "TRACE" | "CONNECT"
@@ -42,6 +43,12 @@ class HttpRequest {
         }, (error: any) => {
             if (url) {
                 this.destroy(url)
+            }
+            if(error.response.status == 400){
+                Message({
+                    type:'error',
+                    message: error.response.data.message || '400'
+                })
             }
             console.error(error)
         })
