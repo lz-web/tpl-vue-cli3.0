@@ -90,6 +90,14 @@ export default [
     component: () => import(/* webpackChunkName: "echartsExample" */ '../views/echartsExample/echartsExample.vue')
   },
   {
+    path: '/evaResult',
+    name: 'evaResult', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "evaResult" */ '../views/evaResult/evaResult.vue')
+  },
+  {
     path: "*",
     redirect: "/login"
   },

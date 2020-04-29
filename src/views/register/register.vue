@@ -11,7 +11,7 @@
                     <!-- 注册标题 -->
                     <div class="register-title">
                         <span class="register-title-cont">注册</span>
-                        <router-link class="to-login flex-center" to="/login">已有账号，去登录></router-link>
+                        <router-link class="to-login flex-center" to="/login">已有账号，去登录&gt;</router-link>
                     </div>
 
                     <!-- 注册步骤 -->
