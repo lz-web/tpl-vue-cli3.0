@@ -17,7 +17,7 @@ export default class About extends Vue {
   active_tab: string = '0';
   current_i: string = '0'; // 当前标签index
   eva_arr: any[] = [];
-  medical_detail : any = {} // 药品详情
+  medical_detail: any = {} // 药品详情
   is_scroll: any = false; // 滚轮滚动事件
   created() {
     //
@@ -97,11 +97,11 @@ export default class About extends Vue {
     })
   }
   // 获取药品详情
-  getMedicalDetail(){
+  getMedicalDetail() {
     Api.getMedicalDetail({
-      get_scl_s:this.$route.params.id
+      get_scl_s: this.$route.params.id
     }).then((res: any) => {
-      if(res.code == 10000){
+      if (res.code == 10000) {
         this.medical_detail = res.result;
       }
       console.log(res)
@@ -109,6 +109,11 @@ export default class About extends Vue {
   }
   // tab 点击事件
   handleClick(v: any) {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+    if (scrollTop > 20) {
+      document.documentElement.scrollTop = 100
+    }
+    console.log(scrollTop)
     console.log(v)
     console.log(this.active_tab)
   }
@@ -169,8 +174,8 @@ export default class About extends Vue {
     }
     console.log(all_score)
   }
-   // 鼠标滚轮事件
-   handleScroll() {
+  // 鼠标滚轮事件
+  handleScroll() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
     console.log(this.is_scroll)
     if (scrollTop > 20) {
