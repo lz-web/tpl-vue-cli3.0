@@ -50,7 +50,7 @@
           </el-tab-pane>
         </el-tabs>
         <div class="sumbit-wrap">
-          <el-button @click="submitBtn" type="primary">提交</el-button>
+          <el-button @click="submitBtn" class="hui-btn">提交</el-button>
         </div>
       </div>
     </div>
