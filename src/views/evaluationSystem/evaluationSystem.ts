@@ -121,6 +121,7 @@ export default class About extends Vue {
   submitBtn(v: any) {
     let message = '选项未评分!'
     let all_score = 0;
+    console.log(this.eva_arr)
     let stu = this.eva_arr.some(item => {
       return item.children.some((item_2: any) => {
         return item_2.children.some((item_3: any) => {

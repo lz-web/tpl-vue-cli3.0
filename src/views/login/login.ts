@@ -67,6 +67,7 @@ export default class LoginVue extends Vue {
                     type: 'success'
                 })
                 jsCookies.set('token', res.access_token)
+                jsCookies.set('refresh_token', res.refresh_token)
                 localStorage.user_info = JSON.stringify(res.user_info)
                 setTimeout(() => {
                     // this.$router.push({path:'/index'})

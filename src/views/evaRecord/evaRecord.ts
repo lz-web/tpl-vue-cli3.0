@@ -37,6 +37,8 @@ export default class About extends Vue {
       page_no:page
     }).then((res: any) => {
       if (res.code == 10000) {
+        console.log('getEvaRecord _ res')
+        console.log(res)
         this.page_obj = res.result
         this.record_list = res.result.rows
         this.$message({

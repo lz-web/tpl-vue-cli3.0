@@ -23,7 +23,7 @@ class HttpRequest {
             // hide loading
         }
     }
-    interceptors(instance: any, url?: string) {
+    interceptors(instance: any, url?: string,options?: any) {
         // 请求拦截
         instance.interceptors.request.use((config: AxiosRequestConfig) => {
             return config
@@ -36,7 +36,7 @@ class HttpRequest {
                 this.destroy(url)
             }
             let { data, status } = res
-            if ((status === 200||status === 201 ) && data) { // 请求成功
+            if ((status === 200 || status === 201) && data) { // 请求成功
                 return data
             }
             return console.error(res)
@@ -44,23 +44,48 @@ class HttpRequest {
             if (url) {
                 this.destroy(url)
             }
-            if(error.response.status == 400){
+            let error_data = error.response.data;
+            if (error.response.status == 400) { // 参数错误相关
                 Message({
-                    type:'error',
+                    type: 'error',
                     message: error.response.data.message || '400'
                 })
+            } else if (error_data.code == 10050 && url != '/medical/user/refresh') { // 令牌 过期 
+                Api.getRefresh().then((res: any) => { // 重新获取令牌
+                    jsCookies.set('token',res.access_token)
+                    this.request(options)
+                    console.log(res)
+                })
+            } else if (error_data.code == 10040) { // 令牌失效 
+                Message({
+                    type: 'error',
+                    message: '您好,登录已失效,请重新登录!'
+                })
+                jsCookies.set('token', '')
+                localStorage.removeItem('user_info')
+                setTimeout(() => {
+                    router.push({
+                        path: '/login'
+                    })
+                },1000)
+            } else {
+                console.error(error)
             }
-            console.error(error)
         })
     }
     async request(options: AxiosRequestConfig) {
         const instance = axios.create()
-        await this.interceptors(instance, options.url)
+        await this.interceptors(instance, options.url,options)
         let headers = {
-            Authorization:  'Bearer ' + jsCookies.get('token') || ''
+            Authorization: 'Bearer ' + jsCookies.get('token') || ''
         }
-        instance.defaults.timeout = 30000; // 请求超时时间
+        if(options.url == '/medical/user/refresh'){
+            headers = {
+                Authorization: 'Bearer ' + jsCookies.get('refresh_token') || ''
+            }
+        }
         instance.defaults.headers = headers; // 请求头
+        instance.defaults.timeout = 30000; // 请求超时时间
         return instance(options)
     }
 }
@@ -75,7 +100,7 @@ const conbineOptions = (_opts: any, data: Datas, method: Methods): AxiosRequestC
     let options = {
         method: opts.method || data.method || method || 'GET',
         url: res_url,
-        header: { 'user-token': 'token'},
+        header: { 'user-token': 'token' },
         dataType: 'jsonp',
         crossDomain: true,
         baseURL: data.ajax_scl_s || CONST.api_url

@@ -39,9 +39,9 @@
                   {{(i_3+1) +'.'+item_3.key}}
                   <div v-for="(radio,i_4) in item_3.grade_standard" :key="i_4">
                     <el-radio
-                      @change="radioChange"
-                      v-model="item_3.score"
-                      :label="radio.val"
+                      @change="() => item_3.score = radio.val"
+                      v-model="item_3.choose"
+                      :label="radio.key"
                     >{{radio.key}}</el-radio>
                   </div>
                 </div>
