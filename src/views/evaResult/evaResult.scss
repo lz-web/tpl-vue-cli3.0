@@ -1,6 +1,126 @@
-@import "@/assets/scss/variables.scss";
+@import "@/assets/scss/common.scss";
 
 .evaResult-wrap {
 	margin-top: 82px;
 	padding-top: 60px;
+	.evaResult-inner {
+		
+		.evaResult-header {
+			margin-top: 64px;
+			.evaResult-header-left {
+				.med-name {
+					height: 32px;
+					line-height: 32px;
+					font-size: 32px;
+					color: #333;
+				}
+				.med-eva-num {
+					margin: 14px 0;
+					height: 14px;
+					line-height: 14px;
+					font-size: 14px;
+					color: #999;
+				}
+				.med-detail {
+					height: 14px;
+					line-height: 14px;
+					font-size: 14px;
+					color: #DC3023;
+				}
+			}
+			.evaResult-header-right {
+				height: 60px;
+				.reEva {
+					width: 147px;
+					height: 60px;
+					border: 1px solid #CCC;
+					color: #666;
+					background-color: #EDEDED;
+				}
+				.reEva:focus {
+					border: 1px solid #CCC;
+				}
+				.download-evaResult {
+					width: 147px;
+					height: 60px;
+					border: 1px solid #DC3023;
+					color: #FFF;
+					background-color: #DC3023;
+				}
+				.download-evaResult:focus {
+					border: 1px solid #DC3023;
+				}
+			}
+		}
+		.evaResult-cont {
+			width: 100%;
+			margin-bottom: 269px;
+			// 上下两个模块公共样式
+			.eva {
+				height: 650px;
+				.eva-cont {
+
+				}
+				.eva-bottom {
+					position: relative;
+					align-self: flex-end;
+					box-sizing: border-box;
+					margin: 19px 10px 10px 0;
+					padding-right: 42px;
+					width: 618px;
+					height: 80px;
+					color: #333;
+					font-size: 16px;
+					.eva-bottom-cont {
+						font-style: italic;
+						.eva-bottom-cont-number {
+							height: 28px;
+							line-height: 28px;
+							font-size: 36px;
+							margin-right: 17px;
+						}
+						.eva-bottom-cont-fen {
+							align-self: flex-end;
+						}
+					}
+					.eva-bottom-title {
+						position: absolute;
+						right: 29px;
+						top: -50px;
+						height: 24px;
+						line-height: 24px;
+						font-size: 24px;
+					}
+				}
+			}
+			.eva-self {
+				margin-top: 33px;
+				border: 1px solid #FFBEC4;
+				.eva-self-cont {
+
+				}
+				.eva-self-bottom {
+					border: 1px dashed #DC3124;
+					// background: linear-gradient(to right, #FFF 40%, #DC3124  60%);
+					.eva-self-bottom-title {
+						color: #DC3124;
+					}
+				}
+			}
+			.eva-industry {
+				margin-top: 87px;
+				border: 1px solid #CCC;
+				.eva-industry-cont {
+
+				}
+				.eva-industry-bottom {
+					border: 1px dashed #666;
+					// background: linear-gradient(to right, #FFF 40%, #DC3124  60%);
+					.eva-industry-bottom-title {
+						color: #666;
+					}
+				}
+			}
+		}
+	}
 }
