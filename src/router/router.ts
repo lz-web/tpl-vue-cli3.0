@@ -90,7 +90,7 @@ export default [
     component: () => import(/* webpackChunkName: "echartsExample" */ '../views/echartsExample/echartsExample.vue')
   },
   {
-    path: '/evaResult',
+    path: '/evaResult/:id', // 评测结果
     name: 'evaResult', 
     meta:{
       keep_alive : false

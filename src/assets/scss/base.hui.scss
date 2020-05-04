@@ -18,3 +18,14 @@
   background-color: #DC3023;
   border: 1px solid #DC3023;
 }
+
+// 表格内小文字
+.hui-text-btn{
+  color:#DC3023;
+  font-size:14px;
+  line-height:18px;
+  cursor: pointer;
+  &:not(:last-child){
+    margin-right: 30px;
+  }
+}

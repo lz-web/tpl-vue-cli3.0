@@ -58,4 +58,13 @@ export default class About extends Vue {
   pageChange(page:number){
     this.getEvaRecord(page)
   }
+  // 评测详情
+  handleDetail(v:any){
+    console.log(v)
+    this.$router.push({ path:`/evaResult/${v.id}`})
+  }
+  // 下载
+  handleDownload(){
+
+  }
 }

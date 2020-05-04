@@ -103,6 +103,7 @@ export default class About extends Vue {
     this.getMedicalDetail();
     this.medical_type_all = [...this.medical_type,...this.medical_type2]
   }
+  // 获取药品详情
   getMedicalDetail(){
     Api.getMedicalDetail({
       get_scl_s:this.$route.params.id

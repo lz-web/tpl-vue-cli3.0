@@ -8,9 +8,19 @@
       <el-table-column prop="industry_score" label="行业得分" width="180"></el-table-column>
       <el-table-column prop="download_count" label="下载次数" width="180"></el-table-column>
       <el-table-column prop="update_at" label="评测时间"></el-table-column>
-      <el-table-column prop="industry_score" label="操作"></el-table-column>
+      <el-table-column prop="industry_score" label="操作">
+        <template slot-scope="scope">
+          <span @click="handleDetail(scope.row)" class="hui-text-btn">评测详情</span>
+          <span @click="handleDownload(scope.row)" class="hui-text-btn">下载</span>
+        </template>
+      </el-table-column>
     </el-table>
-    <el-pagination @current-change="pageChange" background layout="prev, pager, next" :total="page_obj.count"></el-pagination>
+    <el-pagination
+      @current-change="pageChange"
+      background
+      layout="prev, pager, next"
+      :total="page_obj.count"
+    ></el-pagination>
   </div>
 </template>
 

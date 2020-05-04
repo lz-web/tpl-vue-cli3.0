@@ -6,7 +6,7 @@
 	.evaResult-inner {
 		
 		.evaResult-header {
-			margin-top: 64px;
+			// margin-top: 64px;
 			.evaResult-header-left {
 				.med-name {
 					height: 32px;
@@ -74,12 +74,14 @@
 					.eva-bottom-cont {
 						font-style: italic;
 						.eva-bottom-cont-number {
+							color: #fff;
 							height: 28px;
 							line-height: 28px;
 							font-size: 36px;
 							margin-right: 17px;
 						}
 						.eva-bottom-cont-fen {
+							color: #fff;
 							align-self: flex-end;
 						}
 					}
@@ -102,6 +104,7 @@
 				.eva-self-bottom {
 					border: 1px dashed #DC3124;
 					// background: linear-gradient(to right, #FFF 40%, #DC3124  60%);
+					background:url('../../assets/img/result/bg_1.png');
 					.eva-self-bottom-title {
 						color: #DC3124;
 					}
@@ -115,6 +118,7 @@
 				}
 				.eva-industry-bottom {
 					border: 1px dashed #666;
+					background:url('../../assets/img/result/bg_2.png');
 					// background: linear-gradient(to right, #FFF 40%, #DC3124  60%);
 					.eva-industry-bottom-title {
 						color: #666;
@@ -122,5 +126,16 @@
 				}
 			}
 		}
+	}
+	// echart about
+	#radarChart{
+	  width: 391px;
+	  height: 391px;
+	  margin:100px 0 0 244px;
+	}
+	#scatterChart{
+	  width: 1000px;
+	  height: 517px;
+	  margin:0 0 0 100px;
 	}
 }
