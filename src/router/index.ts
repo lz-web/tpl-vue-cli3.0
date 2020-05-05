@@ -9,7 +9,7 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'hash'
 })
 // 跳转之前
 router.beforeEach((to, from, next) => {

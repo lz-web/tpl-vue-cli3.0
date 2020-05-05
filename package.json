@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build_test": "vue-cli-service build --mode test",
+    "build_pro": "vue-cli-service build --mode pro",
     "lint": "vue-cli-service lint",
     "com": "node scripts/component",
     "tep": "node scripts/template",
