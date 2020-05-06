@@ -187,6 +187,10 @@ export default class About extends Vue {
             type: 'success',
             message: res.msg
           })
+          // 评测成功之后跳转到详情界面
+          setTimeout(() => {
+            this.$router.push({ path:`/evaResult/${this.$route.params.id}`})
+          },1500)
         } else {
           this.$message({
             type: 'error',
