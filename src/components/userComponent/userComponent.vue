@@ -41,15 +41,6 @@ export default class About extends Vue {
   // Variablet Wrap   eg : private user_name : string = 'root';
   is_login: boolean = false;
   user_info: object = {};
-  restaurants: any = [
-    { value: "三全鲜食（北新泾店）", id: 12321 },
-    { value: "Hot honey 首尔炸鸡（仙霞路）", id: 123 },
-    { value: "新旺角茶餐厅", id: 123 },
-    { value: "泷千家(天山西路店)", id: 123 }
-  ];
-  state: any = "";
-  state1: any = "";
-  timeout: any = null;
 
   created() {
     //
@@ -57,10 +48,6 @@ export default class About extends Vue {
     this.user_info = localStorage.user_info
       ? JSON.parse(localStorage.user_info)
       : {};
-  }
-
-  activated() {
-    //
   }
 
   mounted() {
@@ -71,29 +58,7 @@ export default class About extends Vue {
     console.log("退出登录");
     jsCookies.set("token", "");
     localStorage.removeItem("user_info");
-    location.href = "/login";
-  }
-  // 搜索按钮
-  async querySearchAsync(v: any, cb: any) {
-    await Api.getMedicalSearch({
-      value: v
-    }).then((res: any) => {
-      this.restaurants = [];
-      res.result.rows.forEach((item: any) => {
-        this.restaurants.push({
-          value: item.comm_name,
-          id: item.order_id
-        });
-      });
-    });
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      cb(this.restaurants);
-    }, 222);
-  }
-  handleSelect(item: any) {
-    console.log(item);
-    this.$router.push({ path: `/detail/${item.id}` });
+    location.href = "/#/login";
   }
 }
 </script>

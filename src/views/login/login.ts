@@ -15,9 +15,9 @@ export default class LoginVue extends Vue {
     // @Action GET_DATA_ASYN
 
     // Variablet Wrap   eg : private user_name : string = 'root';
-    user_phone: string = '15751668553'; // 用户名
-    user_pwd: string = 'hui123456'; // 密码
-    user_verify_code: string | number = '1234'; // 验证码
+    user_phone: string = ''; // 用户名
+    user_pwd: string = ''; // 密码
+    user_verify_code: string | number = ''; // 验证码
     remember_pwd: boolean = false;
     account: boolean = true;
     active_name: any = 'first'; // 当前点击tab
@@ -71,7 +71,7 @@ export default class LoginVue extends Vue {
                 localStorage.user_info = JSON.stringify(res.user_info)
                 setTimeout(() => {
                     // this.$router.push({path:'/index'})
-                    location.href = '/index'
+                    location.href = '/#/index'
                 }, 1500)
                 // this.$router.push({path:'/index'})
             } else {

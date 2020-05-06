@@ -20,7 +20,7 @@
 					</div>
 					<div class="eva-bottom eva-self-bottom flex-end">
 						<div class="eva-bottom-cont flex-end">
-							<b class="eva-bottom-cont-number flex-center">8.2</b>
+							<b class="eva-bottom-cont-number flex-center">{{eva_detail.personal_score}}</b>
 							<span class="eva-bottom-cont-fen">分</span>
 						</div>
 						<span class="eva-bottom-title eva-self-bottom-title">自评综合得分</span>

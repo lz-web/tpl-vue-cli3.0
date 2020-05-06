@@ -13,7 +13,9 @@ export default class About extends Vue {
     // @Action GET_DATA_ASYN
 
     // Variablet Wrap   eg : private user_name : string = 'root';
-    medical_detail: any = {}
+    medical_detail: any = {} // 药品详情
+    eva_detail: any = {} // 评测详情
+    radar_arr: number[] = [] // 雷达数据
     created() {
         //
     }
@@ -25,7 +27,7 @@ export default class About extends Vue {
     mounted() {
         //
         this.getMedicalDetail()
-        this.init()
+        this.getEvaRecord()
     }
 
     // 初始化函数
@@ -69,7 +71,7 @@ export default class About extends Vue {
                 name: '药品',
                 data: [
                     {
-                        value: [8, 6.6, 9.5, 6.5],
+                        value: this.radar_arr,
                         //这里的配置显示数值
                         label: {
                             normal: {
@@ -108,9 +110,9 @@ export default class About extends Vue {
                 }
             },
             legend: {
-                right:10,
-                bottom:80,
-                orient:'vertical',
+                right: 10,
+                bottom: 80,
+                orient: 'vertical',
                 data: ['历史个人评分', '历史平均评分'],
             },
             xAxis: {
@@ -168,6 +170,25 @@ export default class About extends Vue {
         }).then((res: any) => {
             if (res.code == 10000) {
                 this.medical_detail = res.result;
+            }
+            console.log(res)
+        })
+    }
+    // 获取评测详情
+    getEvaRecord() {
+        Api.getEvaRecord({
+            get_scl_s: this.$route.params.id
+        }).then((res: any) => {
+            if (res.code == 10000) {
+                console.log(res)
+                this.eva_detail = res.result;
+                this.radar_arr = [this.eva_detail.score_obj.syx, this.eva_detail.score_obj.kxx, this.eva_detail.score_obj.fzy, this.eva_detail.score_obj.kxix]
+                this.init()
+            } else {
+                this.$message({
+                    type: 'error',
+                    message: res.msg
+                })
             }
             console.log(res)
         })

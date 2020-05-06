@@ -4,13 +4,17 @@
     <div>  </div>-->
     <img @click="$router.push({ path: '/evaluationSystem/' + $route.params.id})" class="eva-btn" src="../../assets/img/detail/eva_btn.png" alt="">
     <div class="title-wrap">
-      <span class="title">{{medical_detail.medical_name || '--'}}</span>
+      <span class="title">{{medical_detail.comm_name || '--'}}</span>
       <span class="title-des">已有3212人&nbsp;&nbsp;&nbsp;进行测评</span>
     </div>
     <div class="info-wrap">
       <p>
         <span class="info-label">通用名称</span>
         <span class="info-value">{{medical_detail.comm_name || '--'}}</span>
+      </p>
+      <p>
+        <span class="info-label">商品名称</span>
+        <span class="info-value">{{medical_detail.medical_name || '--'}}</span>
       </p>
       <p>
         <span class="info-label">英文名称</span>

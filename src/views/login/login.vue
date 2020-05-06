@@ -35,8 +35,8 @@
                                 ></el-input>
                             </div>
                             <div class="row-pwd flex-between">
-                                <el-radio class="remember-pwd" v-model="remember_pwd" label>记住密码</el-radio>
-                                <span class="forget-pwd" @click="forgetPwd">忘记密码</span>
+                                <!-- <el-radio class="remember-pwd" v-model="remember_pwd" label>记住密码</el-radio> -->
+                                <!-- <span class="forget-pwd" @click="forgetPwd">忘记密码</span> -->
                             </div>
                             <div class="main-item">
                                 <el-button class="ts-input login" @click="loginSubmit" type="primary">登录</el-button>

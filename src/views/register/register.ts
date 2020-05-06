@@ -18,16 +18,16 @@ export default class About extends Vue {
     // 第一步
     qrcode: string = '';
     // 第二步
-    user_phone: any = '15751668553';
-    user_pwd: string = 'hui123456';
-    user_pwd2: string = 'hui123456';
+    user_phone: any = '';
+    user_pwd: string = '';
+    user_pwd2: string = '';
     // 第三步
-    user_name: string = 'user_name';
-    user_industry: string = 'user_industry';
-    user_company: string = 'user_company';
-    user_class: string = 'user_class';
-    company_phone: string = '025-83874089';
-    applay_reason: string = 'applay_reason';
+    user_name: string = '';
+    user_industry: string = '';
+    user_company: string = '';
+    user_class: string = '';
+    company_phone: string = '';
+    applay_reason: string = '';
     user_question: string = '';
     user_question_select: string = '';
     user_question_list: object[] = [
@@ -45,6 +45,15 @@ export default class About extends Vue {
             label: '您的父亲生日日期？'
         }
     ];
+    class_options: any[] = [{ // 分类
+        label: '药企', value: '药企'
+    }, {
+        label: '科研院所', value: '科研院所'
+    }, {
+        label: '证券投资', value: '证券投资'
+    }, {
+        label: '其他', value: '其他'
+    }]
     user_question_ret: any = '';
     wx_id: any = '';
     user_checked: boolean = true;
@@ -141,7 +150,7 @@ export default class About extends Vue {
             applay_reason: this.applay_reason,
             user_question: this.user_question_select,
             // user_question_select: this.user_question_select,
-            user_question_ret: dateFilter(this.user_question_ret,'yyyy-MM-dd'),
+            user_question_ret: dateFilter(this.user_question_ret, 'yyyy-MM-dd'),
             user_checked: this.user_checked
         }).then((res: any) => {
             console.log(res)
@@ -157,5 +166,9 @@ export default class About extends Vue {
 
             }
         })
+    }
+    // 密保问题选择切换
+    questionChange(v: any){
+        this.user_question_ret != v ? this.user_question_ret = '' :  null ;
     }
 }

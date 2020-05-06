@@ -40,25 +40,29 @@ export default class About extends Vue {
   }
   // 搜索按钮
   async querySearchAsync(v: any, cb: any) {
-    await Api.getMedicalSearch({
-      value: v
-    }).then((res: any) => {
-      this.restaurants = []
-      res.result.rows.forEach((item: any) => {
-        this.restaurants.push({
-          value: item.comm_name,
-          id: item.order_id,
+    if (v) {
+      await Api.getMedicalSearch({
+        value: v
+      }).then((res: any) => {
+        this.restaurants = []
+        res.result.rows.forEach((item: any) => {
+          this.restaurants.push({
+            value: item.comm_name,
+            id: item.order_id,
+          })
         })
       })
-    })
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      cb(this.restaurants);
-    }, 222);
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        cb(this.restaurants);
+      }, 222);
+    }else{
+      cb([])
+    }
   }
   handleSelect(item: any) {
     console.log(item)
-    this.$router.push({ path: `/detail/${item.id}`})
+    this.$router.push({ path: `/detail/${item.id}` })
   }
   // 搜索按钮
   searchBtn() {

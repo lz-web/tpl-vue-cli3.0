@@ -51,7 +51,7 @@ export default class About extends Vue {
           let no = temp && temp.match(/\((.+?)\)/g)[0];
           let temp_l = temp.split('(')[0];
           temp ? grade_arr.push({
-            key: temp_l,
+            key: temp,
             val: Number(no.substring(1, no.length - 2))
           }) : null
         })
@@ -125,14 +125,30 @@ export default class About extends Vue {
   // 评分提交
   submitBtn(v: any) {
     let message = '选项未评分!'
+    let score_obj = {
+      kxx: 0,
+      syx: 0,
+      kxix: 0,
+      fzy: 0,
+    }
     let all_score = 0;
     console.log(this.eva_arr)
-    let stu = this.eva_arr.some(item => {
-      return item.children.some((item_2: any) => {
-        return item_2.children.some((item_3: any) => {
-          if (item_3.score) {
+    let stu = this.eva_arr.some(item => { // 一级
+      return item.children.some((item_2: any) => { // 二级
+        return item_2.children.some((item_3: any) => { // 三级
+          if (item_3.score || item_3.score == 0) {
             let no_1 = commFnc.computData(item_3.score, item_3.val, '*')
             let no_2 = commFnc.computData(item_2.val, item.val, '*')
+            if(item.key == '科学性'){
+              score_obj.kxx = commFnc.computData(score_obj.kxx, commFnc.computData(no_1, no_2, '*'), '+')
+              console.log('前:' + score_obj.kxx)
+            }else if(item.key == '商业性'){
+              score_obj.syx = commFnc.computData(score_obj.syx, commFnc.computData(no_1, no_2, '*'), '+')
+            }else if(item.key == '可行性'){
+              score_obj.kxix = commFnc.computData(score_obj.kxix, commFnc.computData(no_1, no_2, '*'), '+')
+            }else if(item.key == '仿制药进度与壁垒'){
+              score_obj.fzy = commFnc.computData(score_obj.fzy, commFnc.computData(no_1, no_2, '*'), '+')
+            }
             all_score = commFnc.computData(all_score, commFnc.computData(no_1, no_2, '*'), '+')
             console.log(all_score && all_score)
           } else {
@@ -142,14 +158,27 @@ export default class About extends Vue {
         });
       });
     })
-
     if (!stu) {
+      // 计算 score_obj
+      this.eva_arr.forEach(item => {
+        if(item.key == '科学性'){
+          score_obj.kxx = commFnc.computData(score_obj.kxx, item.val , '/') 
+        }else if(item.key == '商业性'){
+          score_obj.syx = commFnc.computData(score_obj.syx, item.val , '/') 
+        }else if(item.key == '可行性'){
+          score_obj.kxix = commFnc.computData(score_obj.kxix, item.val , '/') 
+        }else if(item.key == '仿制药进度与壁垒'){
+          score_obj.fzy = commFnc.computData(score_obj.fzy, item.val , '/') 
+        } 
+      })
+      console.log(score_obj)
       // 满足条件开始提交咯
       let obj = {
-        record_json: JSON.stringify(this.eva_arr),
-        medical_id: this.$route.query.id,
-        medical_name: this.$route.query.comName,
-        personal_score: all_score
+        record_json: this.eva_arr,
+        medical_id: Number(this.$route.params.id),
+        medical_name: this.medical_detail.comm_name,
+        personal_score: all_score, 
+        score_obj
       }
       // [ 'record_json','medical_id','medical_name' ]
       Api.postEvaScore(obj).then((res: any) => {
