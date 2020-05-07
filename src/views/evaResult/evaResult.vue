@@ -8,7 +8,7 @@
 					<router-link class="med-detail" :to="`/detail/${$route.params.id}`">查看详情 &gt;</router-link>
 				</div>
 				<div class="evaResult-header-right flex-end">
-                    <el-button class="reEva" @click="reEva" type="primary">重新测评</el-button>
+                    <el-button class="reEva" @click="reEva()" type="primary">重新测评</el-button>
                     <el-button class="download-evaResult" @click="downloadEvaResult()" type="primary">下载</el-button>
 				</div>
 			</div>

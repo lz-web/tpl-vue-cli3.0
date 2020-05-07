@@ -41,6 +41,7 @@
                             <div class="main-item">
                                 <el-button class="ts-input login" @click="loginSubmit" type="primary">登录</el-button>
                             </div>
+                            <div class="login-tip flex-center">点击登录即表示已阅读并同意《用户隐私协议》《》</div>
                         </div>
                         <!-- 微信扫码登录 -->
                         <div v-show="!account" class="flex-col-center wx-login">
