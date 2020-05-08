@@ -26,14 +26,15 @@
                                 show-password
                                 ></el-input>
                             </div>
-                            <div class="main-item">
+                            <!-- 暂时不要验证码 -->
+                            <!-- <div class="main-item">
                                 <el-input
                                 class="ts-input"
                                 autocomplete="new-password"
                                 v-model="user_verify_code"
                                 placeholder="请输入验证码"
                                 ></el-input>
-                            </div>
+                            </div> -->
                             <div class="row-pwd flex-between">
                                 <!-- <el-radio class="remember-pwd" v-model="remember_pwd" label>记住密码</el-radio> -->
                                 <!-- <span class="forget-pwd" @click="forgetPwd">忘记密码</span> -->
