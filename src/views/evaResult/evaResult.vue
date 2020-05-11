@@ -13,10 +13,10 @@
 				</div>
 			</div>
 			
-			<div class="evaResult-cont flex-col">
+			<div id="pdfWrap" class="evaResult-cont flex-col">
 				<div class="eva eva-self flex-col-between">
 					<div class="eva-cont eva-self-cont flex1">
-						<div id="radarChart"></div>
+						<div class="radarChart"></div>
 					</div>
 					<div class="eva-bottom eva-self-bottom flex-end">
 						<div class="eva-bottom-cont flex-end">
@@ -28,7 +28,7 @@
 				</div>
 				<div class="eva eva-industry flex-col-between">
 					<div class="eva-cont eva-industry-cont flex1">
-						<div id="scatterChart"></div>
+						<div class="scatterChart"></div>
 
 					</div>
 					<div class="eva-bottom eva-industry-bottom flex-end">
@@ -41,6 +41,8 @@
 				</div>
 			</div>
 		</div>
+		<!-- pdf 下載 -->
+		<evaTemplate v-show="is_show_pdf" :is_download="is_download"></evaTemplate>
 	</div>
 </template>
 

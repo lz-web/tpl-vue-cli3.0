@@ -10,10 +10,12 @@
 .fz-14 {
     font-size: 14px;
 }
+
 .fz-16 {
     font-size: 16px;
 }
-.fz-18{
+
+.fz-18 {
     font-size: 18px;
 }
 
@@ -21,18 +23,22 @@
 .t-l {
     text-align: left;
 }
+
 .t-c {
     text-align: center;
 }
+
 .t-r {
     text-align: right;
 }
+
 // 布局
 .flex-content-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 // from lol-miniprogram  by hyj
 
 .flex-wrap-col {
@@ -46,20 +52,24 @@
     justify-content: center;
     align-items: center;
 }
+
 .flex-center1 {
     display: flex;
     justify-content: center;
 }
+
 .flex-start {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
+
 .flex-start-start {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
+
 .flex-start1 {
     display: flex;
     justify-content: flex-start;
@@ -82,6 +92,7 @@
     justify-content: flex-end;
     align-items: center;
 }
+
 .flex-col {
     display: flex;
     flex-direction: column;
@@ -156,4 +167,18 @@
 
 .flex1 {
     flex: auto;
+}
+
+// echart 图表
+// echart about
+.radarChart {
+    width: 405px;
+    height: 405px;
+    margin: 100px 0 0 244px;
+}
+
+.scatterChart {
+    width: 1000px;
+    height: 517px;
+    margin: 0 0 0 100px;
 }

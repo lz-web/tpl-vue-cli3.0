@@ -82,12 +82,20 @@ export default [
     component: () => import(/* webpackChunkName: "evaRecord" */ '../views/evaRecord/evaRecord.vue')
   },
   {
-    path: '/echartsExample',
+    path: '/echartsExample', // echarts 案例
     name: 'echartsExample', 
     meta:{
       keep_alive : false
     },
     component: () => import(/* webpackChunkName: "echartsExample" */ '../views/echartsExample/echartsExample.vue')
+  },
+  { // 
+    path: '/pdfExample', // pdf 案例
+    name: 'pdfExample', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "pdfExample" */ '../views/pdfExample/pdfExample.vue')
   },
   {
     path: '/evaResult/:id', // 评测结果
@@ -98,7 +106,16 @@ export default [
     component: () => import(/* webpackChunkName: "evaResult" */ '../views/evaResult/evaResult.vue')
   },
   {
-    path: '/userDoc/:id', // 评测结果
+    path: '/evaTemplate/:id', // 评测结果下载模板
+    name: 'evaTemplate', 
+    meta:{
+      keep_alive : false,
+      no_header:true
+    },
+    component: () => import(/* webpackChunkName: "evaTemplate" */ '../views/evaTemplate/evaTemplate.vue')
+  },
+  {
+    path: '/userDoc/:id', // 用户协议
     name: 'userDoc', 
     meta:{
       keep_alive : false

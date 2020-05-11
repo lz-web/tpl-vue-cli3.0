@@ -61,7 +61,11 @@ let moneyFilter = (value: number, num: any, type: string) => {
 };
 // 时间格式过滤器
 let dateFilter = (input: number | Date, format = "yyyy-MM-dd hh:mm:ss") => {
-    if (typeof input === 'number') {
+    console.log(input)
+    if(!input){
+        return false
+    }
+    if (typeof input === 'number' || typeof input === 'string') {
         input = new Date(input)
     }
     let o :any = {
