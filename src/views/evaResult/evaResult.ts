@@ -45,7 +45,7 @@ export default class EvaResult extends EvaData {
         // this.is_download = false
         console.log(this.is_download)
         setTimeout(() => {
-            this.is_download = false
+            this.is_show_pdf = false
             this.is_download = false
         })
     }
