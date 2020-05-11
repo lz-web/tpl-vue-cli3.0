@@ -3,4 +3,5 @@ export default {
     login : true, // 登录
     register : true, // 注册
     index : true, // 首页
+    userDoc : true, // 首页
 }

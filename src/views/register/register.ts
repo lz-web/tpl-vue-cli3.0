@@ -3,6 +3,7 @@ import { Getter, Action } from "vuex-class"
 import CONST from "@/assets/ts/comm.const" // 公共变量
 import { dateFilter } from "@/assets/ts/comm.filter" // 公共变量
 import Api from '@/interface/axios.interface';
+import commFnc from '@/assets/ts/comm.fnc';
 // import {  } from "@/components" // 组件
 
 @Component({})
@@ -29,20 +30,11 @@ export default class About extends Vue {
     company_phone: string = '';
     applay_reason: string = '';
     user_question: string = '';
-    user_question_select: string = '';
+    user_question_select: string = '您的生日日期？';
     user_question_list: object[] = [
         {
             value: '您的生日日期？',
             label: '您的生日日期？'
-        }, {
-            value: '您的小学班主任姓名？',
-            label: '您的小学班主任姓名？'
-        }, {
-            value: '您的爱人生日日期？',
-            label: '您的爱人生日日期？'
-        }, {
-            value: '您的父亲生日日期？',
-            label: '您的父亲生日日期？'
         }
     ];
     class_options: any[] = [{ // 分类
@@ -94,8 +86,9 @@ export default class About extends Vue {
 
     // 账号密码-下一步
     nextBtn() {
+        let reg = /^[A-Za-z0-9_*&$#@]{6,22}$/;
         // 校验
-        if (!this.user_phone) {
+        if (!this.user_phone || !commFnc.checkPhone(this.user_phone)) {
             this.$message({
                 type: 'error',
                 message: '手机号格式有误!'
@@ -104,6 +97,11 @@ export default class About extends Vue {
             this.$message({
                 type: 'error',
                 message: '密码不能为空!'
+            })
+        } else if (!reg.test(this.user_pwd)) {
+            this.$message({
+                type: 'error',
+                message: '密码格式不正确!'
             })
         } else if (!this.user_pwd2) {
             this.$message({
@@ -149,6 +147,7 @@ export default class About extends Vue {
             company_phone: this.company_phone,
             applay_reason: this.applay_reason,
             user_question: this.user_question_select,
+            user_industry:this.user_industry,
             // user_question_select: this.user_question_select,
             user_question_ret: dateFilter(this.user_question_ret, 'yyyy-MM-dd'),
             user_checked: this.user_checked

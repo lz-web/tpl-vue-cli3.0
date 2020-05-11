@@ -98,6 +98,14 @@ export default [
     component: () => import(/* webpackChunkName: "evaResult" */ '../views/evaResult/evaResult.vue')
   },
   {
+    path: '/userDoc/:id', // 评测结果
+    name: 'userDoc', 
+    meta:{
+      keep_alive : false
+    },
+    component: () => import(/* webpackChunkName: "userDoc" */ '../views/userDoc/userDoc.vue')
+  },
+  {
     path: "*",
     redirect: "/login"
   },

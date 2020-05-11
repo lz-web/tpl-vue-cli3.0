@@ -123,7 +123,7 @@ export default class About extends Vue {
   }
 
   // 评分提交
-  submitBtn(v: any) {
+  async submitBtn(v: any) {
     let message = '选项未评分!'
     let score_obj = {
       kxx: 0,
@@ -181,7 +181,7 @@ export default class About extends Vue {
         score_obj
       }
       // [ 'record_json','medical_id','medical_name' ]
-      Api.postEvaScore(obj).then((res: any) => {
+      await Api.postEvaScore(obj).then((res: any) => {
         if (res.code == 10000) {
           this.$message({
             type: 'success',
@@ -189,7 +189,7 @@ export default class About extends Vue {
           })
           // 评测成功之后跳转到详情界面
           setTimeout(() => {
-            this.$router.push({ path:`/evaResult/${this.$route.params.id}`})
+            this.$router.push({ path:`/evaResult/${res.result.id}`})
           },1500)
         } else {
           this.$message({

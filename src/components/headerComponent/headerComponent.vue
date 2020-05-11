@@ -105,6 +105,8 @@ export default class HeaderComponent extends Vue {
       this.timeout = setTimeout(() => {
         cb(this.restaurants);
       }, 222);
+    }else{
+      cb([]);
     }
   }
   handleSelect(item: any) {

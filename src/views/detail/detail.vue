@@ -68,6 +68,9 @@
         <p class="item-des">{{medical_detail[item.en] || '--'}}</p>
       </div>
     </div>
+    <div v-show="scroll_top > 600" class="top-wrap">
+      <img @click="goTop" title="返回顶部" src="../../assets/img/up_to_top.png" alt="">
+    </div>
   </div>
 </template>
 
