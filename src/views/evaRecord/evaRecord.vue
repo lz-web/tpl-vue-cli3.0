@@ -7,11 +7,16 @@
       <el-table-column prop="personal_score" label="自测评分" width="180"></el-table-column>
       <el-table-column prop="industry_score" label="行业得分" width="180"></el-table-column>
       <el-table-column prop="download_count" label="下载次数" width="180"></el-table-column>
-      <el-table-column prop="update_at" label="评测时间"></el-table-column>
+      <el-table-column prop="update_at" label="评测时间">
+         <template slot-scope="scope">
+          {{scope.row.update_at | dateFilter}}
+        </template>
+      </el-table-column>
       <el-table-column prop="industry_score" label="操作">
         <template slot-scope="scope">
           <span @click="handleDetail(scope.row)" class="hui-text-btn">评测详情</span>
-          <span @click="handleDownload(scope.row)" class="hui-text-btn">下载</span>
+          <!-- 一期先不做, 可以实现但没必要 -->
+          <!-- <span @click="handleDownload(scope.row)" class="hui-text-btn">下载</span> -->
         </template>
       </el-table-column>
     </el-table>
