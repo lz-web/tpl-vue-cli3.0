@@ -18,7 +18,6 @@ export default class About extends EvaData {
   // @Action GET_DATA_ASYN
 
   // Variablet Wrap   eg : private user_name : string = 'root';
-  medical_detail: any = {}; // 药品详情 
   scroll_top: number = 0
 
   created() {

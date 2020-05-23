@@ -1,4 +1,5 @@
 import commFnc from '@/assets/ts/comm.fnc'
+import { dateFilter } from '@/assets/ts/comm.filter';
 import Api from '@/interface/axios.interface'
 import { Component, Vue, Prop } from "vue-property-decorator"
 @Component({})
@@ -9,91 +10,91 @@ export default class EvaData extends Vue {
     // Action
     // @Action GET_DATA_ASYN
     // Variablet Wrap   eg : private user_name : string = 'root';
+    medical_type: any[] = [] // 重要
+    medical_type2: any[] = []  // 非重要
     medical_type_all: any[] = []; // 全部类型
-    medical_type2: any[] = [
-        {
-            zh: '性状',
-            en: 'character'
-        },
-        {
-            zh: '注意事项',
-            en: 'note'
-        },
-        {
-            zh: '孕妇及哺乳期...',
-            en: 'gravida_note'
-        },
-        {
-            zh: '药物相互作用',
-            en: 'drug_interactions'
-        },
-        {
-            zh: '贮藏',
-            en: 'store_up'
-        },
-        {
-            zh: '包装',
-            en: 'packaging'
-        },
-        {
-            zh: '有效期',
-            en: 'effective_date'
-        },
-    ]  // 非重要
-    medical_type: any[] = [
-        {
-            zh: '所属类别',
-            en: 'class'
-        },
-        {
-            zh: '适应症',
-            en: 'adaptation_disease'
-        },
-        {
-            zh: '规格',
-            en: 'specification'
-        },
-        {
-            zh: '用法用量',
-            en: 'usage_dosage'
-        },
-        {
-            zh: '不良反应',
-            en: 'untoward_effect'
-        },
-        {
-            zh: '药理毒理',
-            en: 'pharmacology_toxicology'
-        },
-        {
-            zh: '批准文号',
-            en: 'approval_no'
-        },
-        {
-            zh: '生产企业',
-            en: 'production_enterprise'
-        },
-    ] // 重要
     medical_detail: any = {} // 药品详情
-    eva_detail: any = {} // 评测详情
-    radar_arr: number[] = [] // 雷达数据
+    record_list: any[] = [] // 个人评测列表
+    eva_detail: any = {} // 当前药品评测详情
     radar_option: any = {}; // 雷达 配置数据
     line_option: any = {}; // 折线 配置数据
+    radar_arr: number[] = [] // 雷达数据
+    line_arr: number[] = [] // 雷达数据
+    current_time: number = 0;
+    personal_arr: any[] = [];
     created() {
-        //
-        this.medical_type_all = [...this.medical_type, ...this.medical_type2]
+        this.getEvaRecordList();
         this.getMedicalDetail()
-        this.getEvaRecord()
+        // this.getEvaRecord()
+        // 重要项目类型标题
+        this.medical_type = [
+            {
+                zh: '所属类别',
+                en: 'class'
+            },
+            {
+                zh: '适应症',
+                en: 'adaptation_disease'
+            },
+            {
+                zh: '规格',
+                en: 'specification'
+            },
+            {
+                zh: '用法用量',
+                en: 'usage_dosage'
+            },
+            {
+                zh: '不良反应',
+                en: 'untoward_effect'
+            },
+            {
+                zh: '药理毒理',
+                en: 'pharmacology_toxicology'
+            },
+            {
+                zh: '批准文号',
+                en: 'approval_no'
+            },
+            {
+                zh: '生产企业',
+                en: 'production_enterprise'
+            },
+        ]
+        // 非重要项目类型标题
+        this.medical_type2 = [
+            {
+                zh: '性状',
+                en: 'character'
+            },
+            {
+                zh: '注意事项',
+                en: 'note'
+            },
+            {
+                zh: '孕妇及哺乳期...',
+                en: 'gravida_note'
+            },
+            {
+                zh: '药物相互作用',
+                en: 'drug_interactions'
+            },
+            {
+                zh: '贮藏',
+                en: 'store_up'
+            },
+            {
+                zh: '包装',
+                en: 'packaging'
+            },
+            {
+                zh: '有效期',
+                en: 'effective_date'
+            },
+        ]
+        // 合并类型项目标题
+        this.medical_type_all = [...this.medical_type, ...this.medical_type2]
     }
-
-    activated() {
-        //
-    }
-
-    mounted() {
-        //
-    }
-
     // 初始化函数
     init() {
         console.log('初始化')
@@ -160,8 +161,13 @@ export default class EvaData extends Vue {
         };
         // 散点折线图
 
-        var user_phone = 18851179151;
-
+        let user_phone = JSON.parse(localStorage.user_info).user_phone;
+        let x_arr = []
+        for(let i = 0; i < 10; i++){
+            x_arr.unshift(dateFilter(this.current_time,'MM-dd'))
+            this.current_time -= 86400000
+        }
+        console.log(x_arr)
 
         this.line_option = {
 
@@ -169,9 +175,9 @@ export default class EvaData extends Vue {
             tooltip: {
                 formatter: function (params: { seriesName: string; value: any[]; name: any }) {
                     if (params.seriesName == '历史个人评分') {
-                        return `用户:${user_phone} <br> 时间:${params.value[0]}<br> 评分:${params.value[1]}`
+                        return `用户: ${user_phone} <br> 时间: ${params.value[0]}<br> 评分: ${params.value[1]}`
                     } else {
-                        return `时间:${params.name}<br> 评分:${params.value}`
+                        return `时间: ${params.name}<br> 评分: ${params.value}`
                     }
                 }
             },
@@ -189,12 +195,12 @@ export default class EvaData extends Vue {
                 },
                 type: 'category',
                 boundaryGap: false,
-                data: ['2019/01/01', '2019/01/02', '2019/01/03', '2019/01/04', '2019/01/05', '2019/01/06', '2019/01/07']
+                data: x_arr
 
             },
             yAxis: {
                 type: 'category',
-                data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 splitLine: {
                     lineStyle: {
                         type: 'dashed'
@@ -205,14 +211,7 @@ export default class EvaData extends Vue {
             series: [
                 {
                     name: '历史个人评分',
-                    data:
-                        [
-                            ['2019/01/07', 8.1],
-                            ['2019/01/05', 9],
-                            ['2019/01/05', 4],
-                            ['2019/01/05', 5],
-                            ['2019/01/06', 0],
-                        ],
+                    data: this.personal_arr,
                     type: 'scatter',
                     symbolSize: '8',
                     itemStyle: {
@@ -220,7 +219,7 @@ export default class EvaData extends Vue {
                 },
                 {
                     name: '历史平均评分',
-                    data: [8, 6, 5, 3, 9, 6, 6],
+                    data: this.line_arr,
                     type: 'line',
                     smooth: true
                 }
@@ -240,34 +239,55 @@ export default class EvaData extends Vue {
             console.log(res)
         })
     }
-    // 获取评测详情
-    async getEvaRecord() {
-        await Api.getEvaRecord({
-            get_scl_s: this.$route.params.id
+    // 获取个人评测列表
+    async getEvaRecordList() {
+        Api.getEvaRecord({
+            page_no: 1,
         }).then((res: any) => {
             if (res.code == 10000) {
+                console.log('getEvaRecord _ res')
                 console.log(res)
-                this.eva_detail = res.result;
-                this.radar_arr = [this.eva_detail.score_obj.syx, this.eva_detail.score_obj.kxx, this.eva_detail.score_obj.fzy, this.eva_detail.score_obj.kxix]
+                this.record_list = res.result.rows
+                this.current_time = res.current_time
+                this.record_list.forEach(item => {
+                    this.personal_arr.push([dateFilter(item.create_at,'MM-dd'),item.personal_score])
+                    if (item.id == this.$route.params.id) {
+                        this.eva_detail = item;
+                        this.radar_arr = [this.eva_detail.score_obj.syx, this.eva_detail.score_obj.kxx, this.eva_detail.score_obj.fzy, this.eva_detail.score_obj.kxix]
+                        
+                    }
+                })
                 // 初始化 echarts 图表
-                this.init()
+                Api.getIndustryScoreRecord({
+                    medical_id: this.eva_detail.medical_id
+                }).then((res: any) => {
+                    this.line_arr
+                    if (res.code == 10000) {
+                        res.result.rows.forEach((item: any) => {
+                            this.line_arr.unshift(item.industry_score)
+                        })
+                        let count = 10 - this.line_arr.length
+                        for(let i = 0; i < count; i++){
+                            this.line_arr.unshift(0)
+                        }
+                        console.log(this.line_arr)
+                        // 初始化 echarts 图表
+                        this.init()
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            message: res.msg
+                        })
+                    }
+                })
+                console.log(this.personal_arr)
             } else {
                 this.$message({
-                    type: 'error',
-                    message: res.msg
+                  type: 'error',
+                  message: res.msg
                 })
             }
-            console.log(res)
         })
-    }
-    // 重新测评
-    reEva() {
-        this.$router.push({ path: `/evaluationSystem/${this.$route.params.id}` })
-    }
-
-    // 下载测评结果
-    downloadEvaResult(ele: string, name: string) {
-        commFnc.downloadPdf(ele, name)
     }
 
 }

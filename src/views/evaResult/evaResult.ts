@@ -35,7 +35,7 @@ export default class EvaResult extends EvaData {
     }
     // 重新测评
     reEva() {
-        this.$router.push({ path: `/evaluationSystem/${this.$route.params.id}` })
+        this.$router.push({ path: `/evaluationSystem/${this.eva_detail.medical_id}` })
     }
 
     // 下载测评结果
@@ -47,7 +47,7 @@ export default class EvaResult extends EvaData {
         setTimeout(() => {
             this.is_show_pdf = false
             this.is_download = false
-        })
+        },1000)
     }
 
 }

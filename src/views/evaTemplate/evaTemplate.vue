@@ -4,7 +4,7 @@
       <div class="flex-content-between">
         <div>
           <span class="title">{{medical_detail.comm_name}}</span>
-          <span class="desc">已有3213人进行评测</span>
+          <span v-if="eva_detail.eva_score" class="desc">已有 {{eva_detail.eva_score.eva_count}} 人进行评测</span>
         </div>
         <img src="../../assets/img/bar/white_bar.png" alt />
       </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="eva-bottom eva-industry-bottom flex-end">
           <div class="eva-bottom-cont flex-end">
-            <b class="eva-bottom-cont-number flex-center">8.2</b>
+            <b v-if="eva_detail.eva_score" class="eva-bottom-cont-number flex-center">{{eva_detail.eva_score.industry_score}}</b>
             <span class="eva-bottom-cont-fen">分</span>
           </div>
           <span class="eva-bottom-title eva-self-bottom-title">行业综合得分</span>

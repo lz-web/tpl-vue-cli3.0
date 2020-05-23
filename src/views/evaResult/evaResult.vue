@@ -4,7 +4,7 @@
 			<div class="evaResult-header flex-between">
 				<div class="evaResult-header-left flex-col">
 					<span class="med-name">{{medical_detail.comm_name}}</span>
-					<span class="med-eva-num">已有{{}}人进行测评</span>
+					<span v-if="eva_detail.eva_score" class="med-eva-num">已有 {{eva_detail.eva_score.eva_count}} 人进行测评</span>
 					<router-link class="med-detail" :to="`/detail/${$route.params.id}`">查看详情 &gt;</router-link>
 				</div>
 				<div class="evaResult-header-right flex-end">
@@ -33,7 +33,7 @@
 					</div>
 					<div class="eva-bottom eva-industry-bottom flex-end">
 						<div class="eva-bottom-cont flex-end">
-							<b class="eva-bottom-cont-number flex-center">8.2</b>
+							<b v-if="eva_detail.eva_score" class="eva-bottom-cont-number flex-center"> {{eva_detail.eva_score.industry_score}}</b>
 							<span class="eva-bottom-cont-fen">分</span>
 						</div>
 						<span class="eva-bottom-title eva-self-bottom-title">行业综合得分</span>

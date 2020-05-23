@@ -173,6 +173,12 @@ export default class About extends Vue {
       })
       console.log(score_obj)
       // 满足条件开始提交咯
+      // score_obj = {
+      //   kxx: 8.5,
+      //   syx: 9.6,
+      //   kxix: 5.5,
+      //   fzy: 5.9,
+      // }
       let obj = {
         record_json: this.eva_arr,
         medical_id: Number(this.$route.params.id),
