@@ -5,7 +5,7 @@
     <img @click="$router.push({ path: '/evaluationSystem/' + $route.params.id})" class="eva-btn" src="../../assets/img/detail/eva_btn.png" alt="">
     <div class="title-wrap">
       <span class="title">{{medical_detail.comm_name || '--'}}</span>
-      <span class="title-des">已有3212人&nbsp;&nbsp;&nbsp;进行测评</span>
+      <span class="title-des">已有{{(medical_detail.eva_score && medical_detail.eva_score.eva_count) || 0}}人&nbsp;&nbsp;&nbsp;进行测评</span>
     </div>
     <div class="info-wrap">
       <p>

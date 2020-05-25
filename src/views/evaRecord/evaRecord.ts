@@ -40,15 +40,15 @@ export default class About extends Vue {
         console.log('getEvaRecord _ res')
         console.log(res)
         this.page_obj = res.result
-        this.record_list = res.result.rows
+        this.record_list = res.result.data
         this.$message({
           type: 'success',
-          message: res.msg
+          message: res.message
         })
       } else {
         this.$message({
           type: 'error',
-          message: res.msg
+          message: res.message
         })
       }
       console.log(res)

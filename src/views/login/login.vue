@@ -44,8 +44,8 @@
               </div>
               <div class="login-tip flex-center">点击登录即表示已阅读并同意</div>
               <div class="login-tip flex-center">
+                <router-link to="/userDoc/2">《网站服务条款》</router-link>
                 <router-link to="/userDoc/1">《用户隐私协议》</router-link>
-                <router-link to="/userDoc/2">《用户隐私政策》</router-link>
               </div>
             </div>
             <!-- 微信扫码登录 -->

@@ -34,20 +34,23 @@
 
   .eva-top2 {
     height: 150px;
-    padding-top: 100px;
+    padding-top: 80px;
 
     .eva-btn {
       margin: -2px -77px 0 0;
     }
 
     .earth-wrap {
-      margin-top: -174px;
+      margin-top: -154px;
     }
   }
 
   .main-wrap.main-wrap-scroll {
     .el-tabs__header {
-      top: 209px !important;
+      top: 189px !important;
+    }
+    .el-tabs--border-card .el-tabs__content{
+      margin-top: 375px;
     }
   }
 

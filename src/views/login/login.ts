@@ -63,12 +63,12 @@ export default class LoginVue extends Vue {
             console.log(res)
             if (res.code == 10000) {
                 this.$message({
-                    message: res.msg,
+                    message: res.message,
                     type: 'success'
                 })
-                jsCookies.set('token', res.access_token)
-                jsCookies.set('refresh_token', res.refresh_token)
-                localStorage.user_info = JSON.stringify(res.user_info)
+                jsCookies.set('token', res.result.access_token)
+                jsCookies.set('refresh_token', res.result.refresh_token)
+                localStorage.user_info = JSON.stringify(res.result.user_info)
                 setTimeout(() => {
                     // this.$router.push({path:'/index'})
                     location.href = '/#/index'
@@ -76,7 +76,7 @@ export default class LoginVue extends Vue {
                 // this.$router.push({path:'/index'})
             } else {
                 this.$message({
-                    message: res.msg,
+                    message: res.message,
                     type: 'error'
                 })
             }
@@ -113,12 +113,12 @@ export default class LoginVue extends Vue {
                     this.forget = false
                     this.$message({
                         type: 'success',
-                        message: res.msg
+                        message: res.message
                     })
                 } else {
                     this.$message({
                         type: 'error',
-                        message: res.msg
+                        message: res.message
                     })
                 }
                 console.log(res)
@@ -161,12 +161,12 @@ export default class LoginVue extends Vue {
                 this.forget = true
                 this.$message({
                     type: 'success',
-                    message: res.msg
+                    message: res.message
                 })
             } else {
                 this.$message({
                     type: 'error',
-                    message: res.msg
+                    message: res.message
                 })
             }
         })

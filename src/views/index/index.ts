@@ -45,7 +45,7 @@ export default class About extends Vue {
         value: v
       }).then((res: any) => {
         this.restaurants = []
-        res.result.rows.forEach((item: any) => {
+        res.result.data.forEach((item: any) => {
           this.restaurants.push({
             value: item.comm_name,
             id: item.order_id,

@@ -43,7 +43,7 @@ export default class About extends Vue {
     let arr: any[] = [];
     let arr2: any[] = [];
     Api.getEvaluation().then((res: any) => {
-      res.result.forEach((item: any) => {
+      res.result.data.forEach((item: any) => {
         // 处理评分标准
         let grade_arr: any[] = []
         let temp_arr = item.grade_standard.split(';')
@@ -51,7 +51,7 @@ export default class About extends Vue {
           let no = temp && temp.match(/\((.+?)\)/g)[0];
           let temp_l = temp.split('(')[0];
           temp ? grade_arr.push({
-            key: temp,
+            key: temp_l,
             val: Number(no.substring(1, no.length - 2))
           }) : null
         })
@@ -111,7 +111,7 @@ export default class About extends Vue {
   handleClick(v: any) {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
     if (scrollTop > 20) {
-      document.documentElement.scrollTop = 100
+      document.documentElement.scrollTop = 150
     }
     console.log(scrollTop)
     console.log(v)
@@ -191,7 +191,7 @@ export default class About extends Vue {
         if (res.code == 10000) {
           this.$message({
             type: 'success',
-            message: res.msg
+            message: res.message
           })
           // 评测成功之后跳转到详情界面
           setTimeout(() => {
@@ -200,7 +200,7 @@ export default class About extends Vue {
         } else {
           this.$message({
             type: 'error',
-            message: res.msg
+            message: res.message
           })
         }
         console.log(res)

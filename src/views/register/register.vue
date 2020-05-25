@@ -96,7 +96,11 @@
               type="primary"
             >{{step_stu == 0 || step_stu == 1 ? '下一步' : '提交'}}</el-button>
             <!-- 协议 -->
-            <el-checkbox class="register-checkbox" v-model="user_checked">同意《用户隐私协议》</el-checkbox>
+              <div class="reg-tip flex-center">点击下一步即表示已阅读并同意</div>
+              <div class="reg-tip flex-center"> 
+                <router-link to="/userDoc/2">《网站服务条款》</router-link>
+                <router-link to="/userDoc/1">《用户隐私协议》</router-link>
+              </div>
           </div>
         </div>
       </div>

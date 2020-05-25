@@ -7,9 +7,9 @@
       <el-table-column prop="personal_score" label="自测评分" width="180"></el-table-column>
       <el-table-column prop="eva_score.industry_score" label="行业得分" width="180"></el-table-column>
       <el-table-column prop="download_count_f" label="下载次数" width="180"></el-table-column>
-      <el-table-column prop="update_at" label="评测时间">
+      <el-table-column prop="create_at" label="评测时间">
          <template slot-scope="scope">
-          {{scope.row.update_at | dateFilter}}
+          {{scope.row.create_at | dateFilter}}
         </template>
       </el-table-column>
       <el-table-column prop="industry_score" label="操作" width="180">

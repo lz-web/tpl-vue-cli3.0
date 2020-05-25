@@ -35,7 +35,7 @@
         </div>
         <div class="eva-bottom eva-industry-bottom flex-end">
           <div class="eva-bottom-cont flex-end">
-            <b v-if="eva_detail.eva_score" class="eva-bottom-cont-number flex-center">{{eva_detail.eva_score.industry_score}}</b>
+            <b v-if="medical_detail.eva_score" class="eva-bottom-cont-number flex-center">{{medical_detail.eva_score.industry_score}}</b>
             <span class="eva-bottom-cont-fen">分</span>
           </div>
           <span class="eva-bottom-title eva-self-bottom-title">行业综合得分</span>

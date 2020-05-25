@@ -5,7 +5,7 @@
         <div class="hui-container">
           <img class="eva-btn" src="../../assets/img/eva/eva_btn.png" alt />
           <div class="eva-font">待评药物: {{medical_detail.comm_name || ''}}</div>
-          <div class="eva-font2">已有3205人进行了科学评测</div>
+          <div class="eva-font2">已有{{(medical_detail.eva_score && medical_detail.eva_score.eva_count) || 0}}人进行了科学评测</div>
           <div class="earth-wrap">
             <img src="../../assets/img/eva/earth.png" alt />
           </div>
@@ -16,7 +16,7 @@
       <div>
         <div class="hui-container">
           <div class="eva-font">待评药物: {{medical_detail.comm_name || ''}}</div>
-          <div class="eva-font2">已有3205人进行了科学评测</div>
+          <div class="eva-font2">已有{{(medical_detail.eva_score && medical_detail.eva_score.eva_count) || 0}}人进行了科学评测</div>
           <div class="t-r">
             <img class="eva-btn" src="../../assets/img/eva/eva_btn.png" alt />
           </div>
@@ -31,7 +31,7 @@
         <el-tabs type="border-card" v-model="active_tab" @tab-click="handleClick">
           <el-tab-pane v-for="(item,i) in eva_arr" :key="i" :label="item.key" :name="i.toString()">
             <div v-show="i == active_tab" v-for="(item,i) in eva_arr" :key="i" class="list-wrap">
-              <div class="hui-des-color">这是说明</div>
+              <!-- <div class="hui-des-color">这是说明</div> -->
               <div class="list-item" v-for="(item_2,i_2) in eva_arr[i].children" :key="i_2">
                 <div class="dashed"></div>
                 <span class="title">{{item_2.key}}</span>

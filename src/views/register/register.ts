@@ -123,12 +123,12 @@ export default class About extends Vue {
                 user_phone: this.user_phone
             }).then((res: any) => {
                 console.log(res)
-                if (res.code == 200 && !res.has_phone) {
+                if (res.code == 10000 && !res.result.has_phone) {
                     this.step_stu = 2;
                 } else {
                     this.$message({
                         type: 'error',
-                        message: res.msg
+                        message: res.result.has_phone ? '手机号已存在!' : res.message
                     })
                 }
             })
@@ -137,37 +137,66 @@ export default class About extends Vue {
 
     // 其他信息-提交注册
     submitBtn() {
-        Api.postRegister({
-            user_phone: this.user_phone,
-            user_pwd: this.user_pwd,
-            user_pwd2: this.user_pwd2,
-            user_name: this.user_name,
-            user_company: this.user_company,
-            user_class: this.user_class,
-            company_phone: this.company_phone,
-            applay_reason: this.applay_reason,
-            user_question: this.user_question_select,
-            user_industry:this.user_industry,
-            // user_question_select: this.user_question_select,
-            user_question_ret: dateFilter(this.user_question_ret, 'yyyy-MM-dd'),
-            user_checked: this.user_checked
-        }).then((res: any) => {
-            console.log(res)
-            if (res.code == 10000) {
-                this.$message({
-                    type: 'success',
-                    message: res.msg
-                })
-                setTimeout(() => {
-                    this.$router.push({ path: '/login' })
-                }, 1500)
-            } else {
+        if (!this.user_name) {
+            this.$message({
+                type: 'error',
+                message: '用户名不能为空!'
+            })
+        } else if (!this.user_industry) {
+            this.$message({
+                type: 'error',
+                message: '行业类型不能为空!'
+            })
+        } else if (!this.user_company) {
+            this.$message({
+                type: 'error',
+                message: '公司/单位名称不能为空!'
+            })
+        } else if (!this.user_class) {
+            this.$message({
+                type: 'error',
+                message: '职位不能为空!'
+            })
+        } else if (!this.applay_reason) {
+            this.$message({
+                type: 'error',
+                message: '申请原因不能为空!'
+            })
+        } else {
+            Api.postRegister({
+                wx_id: 1,
+                user_phone: this.user_phone,
+                user_pwd: this.user_pwd,
+                user_pwd2: this.user_pwd2,
+                user_name: this.user_name,
+                user_company: this.user_company,
+                user_class: this.user_class,
+                company_phone: this.company_phone,
+                applay_reason: this.applay_reason,
+                user_question: this.user_question_select,
+                user_industry: this.user_industry,
+                // user_question_select: this.user_question_select,
+                user_question_ret: dateFilter(this.user_question_ret, 'yyyy-MM-dd'),
+                user_checked: this.user_checked
+            }).then((res: any) => {
+                console.log(res)
+                if (res.code == 10000) {
+                    this.$message({
+                        type: 'success',
+                        message: res.message
+                    })
+                    setTimeout(() => {
+                        this.$router.push({ path: '/login' })
+                    }, 1500)
+                } else {
 
-            }
-        })
+                }
+            })
+        }
+
     }
     // 密保问题选择切换
-    questionChange(v: any){
-        this.user_question_ret != v ? this.user_question_ret = '' :  null ;
+    questionChange(v: any) {
+        this.user_question_ret != v ? this.user_question_ret = '' : null;
     }
 }

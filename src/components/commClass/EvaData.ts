@@ -24,7 +24,6 @@ export default class EvaData extends Vue {
     personal_arr: any[] = [];
     created() {
         this.getEvaRecordList();
-        this.getMedicalDetail()
         // this.getEvaRecord()
         // 重要项目类型标题
         this.medical_type = [
@@ -163,8 +162,8 @@ export default class EvaData extends Vue {
 
         let user_phone = JSON.parse(localStorage.user_info).user_phone;
         let x_arr = []
-        for(let i = 0; i < 10; i++){
-            x_arr.unshift(dateFilter(this.current_time,'MM-dd'))
+        for (let i = 0; i < 10; i++) {
+            x_arr.unshift(dateFilter(this.current_time, 'MM-dd'))
             this.current_time -= 86400000
         }
         console.log(x_arr)
@@ -200,7 +199,7 @@ export default class EvaData extends Vue {
             },
             yAxis: {
                 type: 'category',
-                data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                data: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 splitLine: {
                     lineStyle: {
                         type: 'dashed'
@@ -229,9 +228,9 @@ export default class EvaData extends Vue {
         this.$echarts('scatterChart', this.line_option)
     }
     // 获取药品详情
-    async getMedicalDetail() {
+    async getMedicalDetail(medical_id: number) {
         await Api.getMedicalDetail({
-            get_scl_s: this.$route.params.id
+            get_scl_s: medical_id
         }).then((res: any) => {
             if (res.code == 10000) {
                 this.medical_detail = res.result;
@@ -247,14 +246,14 @@ export default class EvaData extends Vue {
             if (res.code == 10000) {
                 console.log('getEvaRecord _ res')
                 console.log(res)
-                this.record_list = res.result.rows
-                this.current_time = res.current_time
+                this.record_list = res.result.data
+                this.current_time = res.result.current_time
                 this.record_list.forEach(item => {
-                    this.personal_arr.push([dateFilter(item.create_at,'MM-dd'),item.personal_score])
+                    this.personal_arr.push([dateFilter(item.create_at, 'MM-dd'), item.personal_score])
                     if (item.id == this.$route.params.id) {
                         this.eva_detail = item;
                         this.radar_arr = [this.eva_detail.score_obj.syx, this.eva_detail.score_obj.kxx, this.eva_detail.score_obj.fzy, this.eva_detail.score_obj.kxix]
-                        
+                        this.getMedicalDetail(item.medical_id)
                     }
                 })
                 // 初始化 echarts 图表
@@ -263,11 +262,11 @@ export default class EvaData extends Vue {
                 }).then((res: any) => {
                     this.line_arr
                     if (res.code == 10000) {
-                        res.result.rows.forEach((item: any) => {
+                        res.result.data.forEach((item: any) => {
                             this.line_arr.unshift(item.industry_score)
                         })
                         let count = 10 - this.line_arr.length
-                        for(let i = 0; i < count; i++){
+                        for (let i = 0; i < count; i++) {
                             this.line_arr.unshift(0)
                         }
                         console.log(this.line_arr)
@@ -276,15 +275,15 @@ export default class EvaData extends Vue {
                     } else {
                         this.$message({
                             type: 'error',
-                            message: res.msg
+                            message: res.message
                         })
                     }
                 })
                 console.log(this.personal_arr)
             } else {
                 this.$message({
-                  type: 'error',
-                  message: res.msg
+                    type: 'error',
+                    message: res.message
                 })
             }
         })
