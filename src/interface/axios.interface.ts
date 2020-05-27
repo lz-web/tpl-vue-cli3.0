@@ -50,13 +50,15 @@ class HttpRequest {
                     type: 'error',
                     message: error.response.data.message || '400'
                 })
-            } else if (error_data.code == 10050 && url != '/medical/user/refresh') { // 令牌 过期 
-                Api.getRefresh().then((res: any) => { // 重新获取令牌
-                    jsCookies.set('token',res.access_token)
-                    this.request(options)
-                    console.log(res)
-                })
-            } else if (error_data.code == 10040) { // 令牌失效 
+            } 
+            // else if (error_data.code == 10050 && url != '/medical/user/refresh') { // 令牌 过期 
+            //     Api.getRefresh().then((res: any) => { // 重新获取令牌
+            //         jsCookies.set('token',res.access_token)
+            //         this.request(options)
+            //         console.log(res)
+            //     })
+            // } 
+            else if (error_data.code == 10040) { // 令牌失效 
                 Message({
                     type: 'error',
                     message: '您好,登录已失效,请重新登录!'
