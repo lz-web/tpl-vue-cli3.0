@@ -19,11 +19,15 @@ export default class EvaData extends Vue {
     radar_option: any = {}; // 雷达 配置数据
     line_option: any = {}; // 折线 配置数据
     radar_arr: number[] = [] // 雷达数据
-    line_arr: number[] = [] // 雷达数据
+    line_arr: number[] = [0,0,0,0,0,0,0,0,0] // 雷达数据
     current_time: number = 0;
     personal_arr: any[] = [];
     created() {
         this.getEvaRecordList();
+        console.log(this.$route)
+        if (this.$route.name == 'detail') {
+            this.getMedicalDetail(this.$route.params.id)
+        }
         // this.getEvaRecord()
         // 重要项目类型标题
         this.medical_type = [
@@ -228,7 +232,7 @@ export default class EvaData extends Vue {
         this.$echarts('scatterChart', this.line_option)
     }
     // 获取药品详情
-    async getMedicalDetail(medical_id: number) {
+    async getMedicalDetail(medical_id: any) {
         await Api.getMedicalDetail({
             get_scl_s: medical_id
         }).then((res: any) => {
@@ -260,15 +264,13 @@ export default class EvaData extends Vue {
                 Api.getIndustryScoreRecord({
                     medical_id: this.eva_detail.medical_id
                 }).then((res: any) => {
-                    this.line_arr
                     if (res.code == 10000) {
                         res.result.data.forEach((item: any) => {
-                            this.line_arr.unshift(item.industry_score)
+                            let history_time = Number(item.history_time)
+                            let index = Math.ceil((this.current_time - history_time) / 86400000)
+                            console.log(this.current_time, history_time)
+                            this.line_arr[10 - index] = item.industry_score
                         })
-                        let count = 10 - this.line_arr.length
-                        for (let i = 0; i < count; i++) {
-                            this.line_arr.unshift(0)
-                        }
                         console.log(this.line_arr)
                         // 初始化 echarts 图表
                         this.init()
