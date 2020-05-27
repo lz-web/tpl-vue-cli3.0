@@ -24,7 +24,7 @@
       @current-change="pageChange"
       background
       layout="prev, pager, next"
-      :total="page_obj.count"
+      :total="page_obj.total"
     ></el-pagination>
   </div>
 </template>
