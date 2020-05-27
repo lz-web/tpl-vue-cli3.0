@@ -197,9 +197,8 @@ export default class EvaData extends Vue {
                     }
                 },
                 type: 'category',
-                boundaryGap: false,
-                data: x_arr
-
+                boundaryGap: true,
+                data: x_arr,
             },
             yAxis: {
                 type: 'category',
