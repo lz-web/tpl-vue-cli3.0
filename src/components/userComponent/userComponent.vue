@@ -44,7 +44,7 @@ export default class About extends Vue {
 
   created() {
     //
-    this.is_login = jsCookies.get("token") ? true : false;
+    this.is_login = (jsCookies.get("token") && jsCookies.get("token") != 'is_admin') ? true : false;
     this.user_info = localStorage.user_info
       ? JSON.parse(localStorage.user_info)
       : {};
