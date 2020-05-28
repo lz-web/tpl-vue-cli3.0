@@ -6,4 +6,6 @@ export default {
     userDoc : true, // 用户协议
     pdfExample : true, // pdf案例
     echartsExample : true, // echarts 案例
+    adminEvaResult : true, // 后台下载界面
+    adminEvaTemplate : true, // 后台下载模板
 }

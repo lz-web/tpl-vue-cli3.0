@@ -1,9 +1,10 @@
 import commFnc from '@/assets/ts/comm.fnc'
 import { dateFilter } from '@/assets/ts/comm.filter';
+import jsCookies from 'js-cookie'
 import Api from '@/interface/axios.interface'
 import { Component, Vue, Prop } from "vue-property-decorator"
 @Component({})
-export default class EvaData extends Vue {
+export default class AdminEvaData extends Vue {
     // Getter
     // @Getter author
 
@@ -22,7 +23,11 @@ export default class EvaData extends Vue {
     line_arr: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0] // 雷达数据
     current_time: number = 0;
     personal_arr: any[] = [];
+    admin_token: any = localStorage.access_token || '';
     created() {
+        if(this.admin_token && !jsCookies.get('token')){
+            jsCookies.set('token','is_admin')
+        }
         this.getEvaRecordList();
         console.log(this.$route)
         if (this.$route.name == 'detail') {
@@ -163,7 +168,7 @@ export default class EvaData extends Vue {
         };
         // 散点折线图
 
-        let user_phone = JSON.parse(localStorage.user_info).user_phone;
+        let user_phone = this.$route.query.user_phone;
         let x_arr = []
         for (let i = 0; i < 10; i++) {
             x_arr.unshift(dateFilter(this.current_time, 'MM-dd'))
@@ -232,7 +237,9 @@ export default class EvaData extends Vue {
     // 获取药品详情
     async getMedicalDetail(medical_id: any) {
         await Api.getMedicalDetail({
-            get_scl_s: medical_id
+            get_scl_s: medical_id,
+            admin_token: this.admin_token,
+            user_phone: this.$route.query.user_phone
         }).then((res: any) => {
             if (res.code == 10000) {
                 this.medical_detail = res.result;
@@ -243,6 +250,8 @@ export default class EvaData extends Vue {
     async getEvaRecordDetail() {
         Api.getEvaRecord({
             get_scl_s: this.$route.params.id,
+            admin_token: this.admin_token,
+            user_phone: this.$route.query.user_phone
         }).then((res: any) => {
             if (res.code == 10000) {
                 this.eva_detail = res.result;
@@ -256,6 +265,8 @@ export default class EvaData extends Vue {
     async getEvaRecordList() {
         Api.getEvaRecord({
             page_no: 1,
+            admin_token: this.admin_token,
+            user_phone: this.$route.query.user_phone
         }).then((res: any) => {
             if (res.code == 10000) {
                 console.log('getEvaRecord _ res')
@@ -283,7 +294,9 @@ export default class EvaData extends Vue {
     async getIndustryScoreRecord() {
         // 初始化 echarts 图表
         Api.getIndustryScoreRecord({
-            medical_id: this.eva_detail.medical_id
+            medical_id: this.eva_detail.medical_id,
+            admin_token: this.admin_token,
+            user_phone: this.$route.query.user_phone
         }).then((res: any) => {
             if (res.code == 10000) {
                 res.result.data.forEach((item: any) => {

@@ -1,0 +1,151 @@
+@import "@/assets/scss/variables.scss";
+
+.adminEvaTemplate-wrap {
+
+  // width: 100%;
+  .header-wrap {
+    height: 50px;
+    color: #fff;
+    padding: 35px 35px 35px 60px;
+    background: linear-gradient(90deg, rgba(220, 48, 35, 1), rgba(157, 11, 0, 1));
+
+    .title {
+      font-size: 26px;
+
+    }
+
+    .desc {
+      font-size: 14px;
+      margin-left: 20px;
+    }
+
+    .time {
+      color: #FB756C;
+      margin-top: 15px;
+      font-size: 14px;
+
+      .line {
+        display: inline-block;
+        width: 1088px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(251, 117, 108, 1), rgba(157, 11, 0, 1))
+      }
+    }
+  }
+
+  .evaResult-cont {
+    width: 100%;
+    margin-bottom: 68px;
+
+    // 上下两个模块公共样式
+    .eva {
+      height: 650px;
+
+      .eva-cont {}
+
+      .eva-bottom {
+        position: relative;
+        align-self: flex-end;
+        box-sizing: border-box;
+        margin: 19px 10px 10px 0;
+        padding-right: 42px;
+        width: 618px;
+        height: 80px;
+        color: #333;
+        font-size: 16px;
+
+        .eva-bottom-cont {
+          font-style: italic;
+
+          .eva-bottom-cont-number {
+            color: #fff;
+            height: 28px;
+            line-height: 28px;
+            font-size: 36px;
+            margin-right: 17px;
+          }
+
+          .eva-bottom-cont-fen {
+            color: #fff;
+            align-self: flex-end;
+          }
+        }
+
+        .eva-bottom-title {
+          position: absolute;
+          right: 29px;
+          top: -50px;
+          height: 24px;
+          line-height: 24px;
+          font-size: 24px;
+        }
+      }
+    }
+
+    .eva-self {
+      margin-top: 33px;
+      border: 1px solid #FFBEC4;
+
+      .eva-self-cont {}
+
+      .eva-self-bottom {
+        border: 1px dashed #DC3124;
+        // background: linear-gradient(to right, #FFF 40%, #DC3124  60%);
+        background: url('../../../assets/img/result/bg_1.png');
+
+        .eva-self-bottom-title {
+          color: #DC3124;
+        }
+      }
+    }
+
+    .eva-industry {
+      margin-top: 87px;
+      border: 1px solid #CCC;
+
+      .eva-industry-cont {}
+
+      .eva-industry-bottom {
+        border: 1px dashed #666;
+        background: url('../../../assets/img/result/bg_2.png');
+
+        // background: linear-gradient(to right, #FFF 40%, #DC3124  60%);
+        .eva-industry-bottom-title {
+          color: #666;
+        }
+      }
+    }
+  }
+
+  // 详情区域
+
+  .detail-c {
+    margin-top: 100px;
+    padding-left: 68px;
+    width: 920px;
+
+    .detail-item {
+      margin-bottom: 40px;
+
+      .line-left {
+        background-color: #fff;
+        padding-right: 20px;
+      }
+
+      .title {
+        margin-left: 10px;
+      }
+
+      .item-des {
+        margin-top: 10px;
+        color: #666666;
+      }
+
+      .line {
+        height: 1px;
+        background: rgba(238, 238, 238, 1);
+        margin-bottom: -10px;
+      }
+    }
+  }
+}
