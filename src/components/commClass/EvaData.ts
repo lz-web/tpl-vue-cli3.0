@@ -246,9 +246,11 @@ export default class EvaData extends Vue {
         }).then((res: any) => {
             if (res.code == 10000) {
                 this.eva_detail = res.result;
-                this.radar_arr = [this.eva_detail.score_obj.syx, this.eva_detail.score_obj.kxx, this.eva_detail.score_obj.fzy, this.eva_detail.score_obj.kxix]
-                this.getMedicalDetail(res.result.medical_id)
-                this.getIndustryScoreRecord()
+                if (this.eva_detail.score_obj) {
+                    this.radar_arr = [this.eva_detail.score_obj.syx, this.eva_detail.score_obj.kxx, this.eva_detail.score_obj.fzy, this.eva_detail.score_obj.kxix]
+                }
+                this.eva_detail.medical_id && this.getMedicalDetail(this.eva_detail.medical_id) && this.getIndustryScoreRecord()
+
             }
         })
     }

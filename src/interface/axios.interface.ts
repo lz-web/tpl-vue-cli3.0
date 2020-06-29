@@ -126,6 +126,7 @@ const Api = (() => {
                     path: '/login'
                 })
             }
+            console.log(opts)
             const newOpts = conbineOptions(opts, data, method)
             const res = await HTTP.request(newOpts)
             return res

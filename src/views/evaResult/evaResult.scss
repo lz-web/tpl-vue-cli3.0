@@ -3,9 +3,11 @@
 .evaResult-wrap {
 	margin-top: 82px;
 	padding-top: 60px;
+
 	.evaResult-inner {
-		
+
 		.evaResult-header {
+
 			// margin-top: 64px;
 			.evaResult-header-left {
 				.med-name {
@@ -14,6 +16,7 @@
 					font-size: 32px;
 					color: #333;
 				}
+
 				.med-eva-num {
 					margin: 14px 0;
 					height: 14px;
@@ -21,6 +24,7 @@
 					font-size: 14px;
 					color: #999;
 				}
+
 				.med-detail {
 					height: 14px;
 					line-height: 14px;
@@ -29,8 +33,10 @@
 					margin-top: 10px;
 				}
 			}
+
 			.evaResult-header-right {
 				height: 60px;
+
 				.reEva {
 					width: 147px;
 					height: 60px;
@@ -38,9 +44,11 @@
 					color: #666;
 					background-color: #EDEDED;
 				}
+
 				.reEva:focus {
 					border: 1px solid #CCC;
 				}
+
 				.download-evaResult {
 					width: 147px;
 					height: 60px;
@@ -48,20 +56,23 @@
 					color: #FFF;
 					background-color: #DC3023;
 				}
+
 				.download-evaResult:focus {
 					border: 1px solid #DC3023;
 				}
 			}
 		}
+
 		.evaResult-cont {
 			width: 100%;
-			margin-bottom: 269px;
+			margin-bottom: 122px;
+
 			// 上下两个模块公共样式
 			.eva {
 				height: 650px;
-				.eva-cont {
 
-				}
+				.eva-cont {}
+
 				.eva-bottom {
 					position: relative;
 					align-self: flex-end;
@@ -72,8 +83,10 @@
 					height: 80px;
 					color: #333;
 					font-size: 16px;
+
 					.eva-bottom-cont {
 						font-style: italic;
+
 						.eva-bottom-cont-number {
 							color: #fff;
 							height: 28px;
@@ -81,11 +94,13 @@
 							font-size: 36px;
 							margin-right: 17px;
 						}
+
 						.eva-bottom-cont-fen {
 							color: #fff;
 							align-self: flex-end;
 						}
 					}
+
 					.eva-bottom-title {
 						position: absolute;
 						right: 29px;
@@ -96,34 +111,125 @@
 					}
 				}
 			}
+
 			.eva-self {
 				margin-top: 33px;
 				border: 1px solid #FFBEC4;
-				.eva-self-cont {
 
-				}
+				.eva-self-cont {}
+
 				.eva-self-bottom {
 					border: 1px dashed #DC3124;
 					// background: linear-gradient(to right, #FFF 40%, #DC3124  60%);
-					background:url('../../assets/img/result/bg_1.png');
+					background: url('../../assets/img/result/bg_1.png');
+
 					.eva-self-bottom-title {
 						color: #DC3124;
 					}
 				}
 			}
+
 			.eva-industry {
 				margin-top: 87px;
 				border: 1px solid #CCC;
-				.eva-industry-cont {
 
-				}
+				.eva-industry-cont {}
+
 				.eva-industry-bottom {
 					border: 1px dashed #666;
-					background:url('../../assets/img/result/bg_2.png');
+					background: url('../../assets/img/result/bg_2.png');
+
 					// background: linear-gradient(to right, #FFF 40%, #DC3124  60%);
 					.eva-industry-bottom-title {
 						color: #666;
 					}
+				}
+			}
+		}
+
+		.comment-wrap {
+			padding-bottom: 100px;
+
+			.title {
+				font-size: 20px;
+				color: #333;
+			}
+
+			.comment-c {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 20px 0 50px 0;
+
+				.textarea {
+					width: 1168px;
+					height: 58px;
+					border-radius: 6px;
+					padding: 15px;
+					border: 1px solid rgba(220, 48, 35, 1);
+					resize: none;
+
+					&:focus {
+						outline: none;
+					}
+				}
+
+				.send-comment {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 100px;
+					height: 90px;
+					background: rgba(220, 48, 35, 1);
+					border-radius: 6px;
+					font-size: 20px;
+					font-weight: 400;
+					color: rgba(255, 255, 255, 1);
+					line-height: 24px;
+					cursor: pointer;
+				}
+			}
+
+			.comment-list {
+				display: flex;
+				padding: 35px 0;
+				border-top: 1px solid #ddd;
+
+				.left {
+					img {
+						width: 54px;
+						height: 54px;
+					}
+
+					margin-right: 20px;
+				}
+
+				.right {
+					font-size: 14px;
+					font-weight: 400;
+
+					.name {
+						color: #DC3023;
+					}
+
+					.container {
+						color: #444;
+						margin: 10px 0 20px 0;
+					}
+
+					.time {
+						color: #ccc;
+					}
+				}
+			}
+
+			.null-wrap {
+				text-align: center;
+
+				.desc {
+					color: #666;
+					font-weight: 400;
+					margin-top: 30px;
 				}
 			}
 		}
