@@ -7,3 +7,45 @@
   width: 1200px;
   margin: 0 auto;
 }
+
+// 字体颜色相关
+.hui-gray {
+  color: #ADADB8;
+}
+.hui-desc {
+  color: #2E2F47;
+}
+.hui-a{
+  color: #10A4FD;
+  text-decoration: underline;
+}
+// flex 布局相关
+.hui-flex {
+  display: flex;
+}
+.hui-flex-c{
+  display: flex;
+  align-items: center;
+}
+.hui-flex-c2{
+  display: flex;
+  justify-content: center;
+}
+.hui-flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.hui-flex-e {
+  display: flex; 
+  justify-content: flex-end;
+}
+
+// 文字对其方式
+.hui-text-c {
+  text-align: center;
+}
+.hui-text-point3{ 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

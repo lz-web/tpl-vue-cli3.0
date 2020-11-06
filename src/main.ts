@@ -7,7 +7,7 @@ import "@/assets/scss/common.scss"
 import './plugins/element.js'
 
 Vue.config.productionTip = false
-
+ 
 new Vue({
   router,
   store,
