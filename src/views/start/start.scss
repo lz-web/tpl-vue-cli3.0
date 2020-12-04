@@ -1,0 +1,45 @@
+@import "@/assets/scss/variables.scss";
+
+.start-wrap {
+  width: 100%;
+  text-align: center;
+  min-height: 100vh;
+  background: url(../../assets/img/vr/bc.png) no-repeat;
+  background-size: cover;
+  background-position: center center;
+  .title {
+    width: 91px;
+    margin: 0 auto;
+    line-height: 120px;
+    font-size: 90px;
+    padding-top: 400px;
+    color: #fff;
+  }
+
+  .img-start {
+    width: 258px;
+    height: 76px;
+    margin-top: 200px;
+  }
+
+  .bottom {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+
+    .text {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .white {
+      width: 270px;
+      height: 10px;
+      background: #FFFFFF;
+      border-radius: 5px;
+      margin: 0 auto;
+    }
+  }
+}

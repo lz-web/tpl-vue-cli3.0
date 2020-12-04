@@ -1,7 +1,9 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
+    axios: true,
+    node: true,
   },
   extends: [
     'plugin:vue/essential',

@@ -9,7 +9,7 @@ const CONST = {
     is_debugger: true, // 是否开启debugger开发者模式
     public_key: '', // 公共key
     des_key: '', // des 加密公钥
-    api_url: 'https://baidu.com' // 接口请求地址
+    api_url: process.env.VUE_APP_api_url // 接口请求地址
 }
 
 export default CONST; 

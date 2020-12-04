@@ -16,10 +16,10 @@ export default class About extends Vue {
 
   created() {
     //
-    Api.getGeetest().then((res: any) => {
-      console.log(res)
-    })
-    console.log()
+    // Api.getGeetest().then((res: any) => {
+    //   console.log(res)
+    // })
+    // console.log()
   }
   
   activated() {
@@ -28,6 +28,23 @@ export default class About extends Vue {
 
   mounted() {
     //
+      // 获取XML 数据生成VR场景
+			window.axios.get('http://tcmobileapi.qa.17usoft.com/manageassistant/api/vr/sceneXml/7')
+      .then(function (response: { data: any; }) {
+        console.log(response);
+        window.embedpano({
+          xml: null,
+          target: "pano",
+          html5: "webgl+only",
+          onready: function (krpanoJSinterface: { get: (arg0: string) => any; }) {
+            var krpano = krpanoJSinterface.get("global");
+            krpano.actions.loadxml(response.data);
+          }
+        });
+      })
+      .catch(function (error: any) {
+        console.log(error);
+      });
   }
 
   // 初始化函数

@@ -2,8 +2,69 @@
 @import './variables.scss';
 
 // 正常内容区域
-.hui-container {
+.hui_container {
   box-sizing: border-box;
   width: 1200px;
   margin: 0 auto;
+}
+//公用hui 样式    by lz on 20190307
+// 正常内容区域
+.hui_container {
+  box-sizing: border-box;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+// 字体颜色相关
+.hui_gray {
+  color: #ADADB8;
+}
+
+.hui_desc {
+  color: #2E2F47;
+}
+
+.hui_a {
+  color: #10A4FD;
+  text-decoration: underline;
+}
+
+// flex 布局相关
+.hui_flex {
+  display: flex;
+}
+
+.hui_flex_c {
+  display: flex;
+  align-items: center;
+}
+
+.hui_flex_c2 {
+  display: flex;
+  justify-content: center;
+}
+
+.hui_flex_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hui_flex_e {
+  display: flex;
+  justify-content: flex-end;
+}
+
+// 文字对其方式
+.hui_text_c {
+  text-align: center;
+}
+
+.hui_text_point3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hui_hidden{
+  display: none
 }

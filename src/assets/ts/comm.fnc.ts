@@ -3,12 +3,9 @@ import { JSEncrypt } from 'jsencrypt';
 import Vue from 'vue';
 import CryptoJS from 'crypto-js';
 import CONST from './comm.const';
-// import Api from "@/utils/request";
 import BigNumber from 'bignumber.js';
-// import { Mark } from '../../../public/static/custom_scripts/chart_main/datafeed-api';
 
 export default {
-  //
   // 码值___转换
   codeTransform: (value: any, code_obj: { [x: string]: any; }) => {
     return code_obj[value];
@@ -212,7 +209,7 @@ export default {
     }
     return num;
   },
-
+  // 极验的初始化
   initGeetest(params: any, obj: any) {
     let gt = document.getElementById("gtjs")
     if (!gt) {
