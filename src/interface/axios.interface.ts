@@ -59,7 +59,8 @@ const conbineOptions = (_opts: any, data: Datas, method: Methods): AxiosRequestC
     if (typeof opts === 'string') {
         opts = { url: opts }
     }
-    let res_url = data.get_scl_s ? (opts.url + '/' + data.get_scl_s) : opts.url;
+    // get 方式特殊传参 get_key : ''
+    let res_url = data.get_key ? (opts.url + '/' + data.get_key) : opts.url;
 
     let options = {
         method: opts.method || data.method || method || 'GET',
@@ -70,7 +71,7 @@ const conbineOptions = (_opts: any, data: Datas, method: Methods): AxiosRequestC
         baseURL: data.ajax_scl_s || CONST.api_url
     }
     data.ajax_scl_s ? delete data.ajax_scl_s : null;
-    data.get_scl_s ? delete data.get_scl_s : null;
+    data.get_key ? delete data.get_key : null;
     const _data = { ...opts.data, ...data };
     return options.method !== 'GET' ? Object.assign(options, { data: _data }) : Object.assign(options, { params: _data })
 }

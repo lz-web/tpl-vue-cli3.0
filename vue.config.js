@@ -7,13 +7,14 @@ const resolve = dir => {
     return path.join(__dirname, dir)
 }
 let dist_url;// 打包生成的生产环境构建文件的目录;
-if (process.env.VUE_APP_ENV === 'test') {
-    dist_url = 'test_dist'
-} else if(process.env.VUE_APP_ENV === 'release'){
-    dist_url = 'dist_release'
-} else {
-    dist_url = 'dist_' + process.env.VUE_APP_ENV;
-}
+// if (process.env.VUE_APP_ENV === 'test') {
+//     dist_url = 'test_dist'
+// } else if(process.env.VUE_APP_ENV === 'release'){
+//     dist_url = 'dist_release'
+// } else {
+//     dist_url = 'dist_' + process.env.VUE_APP_ENV;
+// }
+dist_url = 'dist_' + process.env.VUE_APP_ENV;
 
 // cdn引入
 const isProduction = process.env.NODE_ENV === 'production';

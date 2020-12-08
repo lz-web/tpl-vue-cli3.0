@@ -3,6 +3,9 @@ import CONST from "@/assets/ts/comm.const" // 公共变量
 import { Getter, Action } from "vuex-class"
 // import {  } from "@/components" // 组件
 import Api from '../../interface/axios.interface';
+import commFnc from '@/assets/ts/comm.fnc';
+import Xml from '@/assets/temp/xml.vr';
+import { Toast } from 'vant';
 
 @Component({})
 export default class About extends Vue {
@@ -23,8 +26,11 @@ export default class About extends Vue {
   stars_share: any = {}; // 分享 点赞 数量
   show_detail: boolean = false;
   current_scene: number = 0; // 当前场景下标
+  is_play: boolean = false; // 音乐是否播放
+  is_ipx: boolean = false; // 是否iphonex
   created() {
     this.vr_obj = this.$route.query || {}
+    this.is_ipx = this.vr_obj.is_ipx == 1
     this.getShare()
   }
 
@@ -34,87 +40,58 @@ export default class About extends Vue {
 
   mounted() {
     this.doc_id = document.getElementById('pano')
-    this.init()
-    //
-    // 获取XML 数据生成VR场景
-    window.axios.get('https://tcmobileapi.qa.17usoft.com/manageassistant/api/vr/sceneXml/' + this.vr_obj.sceneResourceId)
-      .then((response: { data: any; }) => {
-        console.log(response);
-        window.embedpano({
-          xml: null,
-          target: "pano",
-          html5: "webgl+only",
-          onready: (krpanoJSinterface: { get: (arg0: string) => any; }) => {
-            let krpano = krpanoJSinterface.get("global");
-            krpano.actions.loadxml(response.data);
-            this.krpanoDoc = krpano.actions
-          }
-        });
-      })
-      .catch(function (error: any) {
+    // 默认自动播放
+    // let mp3Audio: any = document.getElementById('mp3Audio')
+    // mp3Audio.play && mp3Audio.play()
+    // this.is_play = true
+
+    this.getVrDetail()
+    this.getVrXml()
+  }
+  // 获取XML 数据生成VR场景
+  getVrXml() {
+    Api.getVrXml({ get_key: this.vr_obj.sceneResourceId }).then((res: any) => {
+      window.embedpano({
+        xml: null,
+        target: "pano",
+        html5: "webgl+only",
+        onready: (krpanoJSinterface: { get: (arg0: string) => any; }) => {
+          let krpano = krpanoJSinterface.get("global");
+
+          krpano.actions.loadxml(Xml.xml2Temp(res));
+          this.krpanoDoc = krpano.actions
+          console.log(this.krpanoDoc)
+        }
+      });
+    })
+      .catch((error: any) => {
         console.log(error);
       });
   }
-
-  // 初始化函数
-  init() {
-    //
-    // 获取VR数据详情
-    window.axios.get('https://tcmobileapi.qa.17usoft.com/manageassistant/api/vr/product/' + this.vr_obj.sceneResourceId)
-      .then((response: any) => {
-
-        this.scene_list = response.data.body.krpanoSceneList
-        this.vr_info = response.data.body || {}
-        let arr = JSON.parse(response.data.body.summaryContent)
-        this.rich_text = arr.filter((item: { type: number; }) => item.type == 2)
-        if(!this.rich_text.length){
-          this.rich_text = [{"type":2,"cont":"<p>无数据</p>"}]
-        }
-        let is_init = true
-        //  手机端交互
-        // document.getElementById("pano").addEventListener("touchend", () => {
-        //   console.log('touchend' + is_init)
-        //   if (is_init) {
-        //     let mp3Audio = document.getElementById('mp3Audio')
-        //     mp3Audio.src = response.data.body.musicUrl || ''
-        //     setTimeout(() => {
-        //       mp3Audio.play();
-
-        //     }, 200)
-        //     is_init = false
-        //   }
-        // });
-        //  pc交互
-        // document.getElementById("pano").addEventListener("click", () => {
-        //   console.log('click')
-        //   if (is_init) {
-        //     let mp3Audio = document.getElementById('mp3Audio')
-        //     mp3Audio.src = response.data.body.musicUrl || ''
-        //     mp3Audio.play();
-        //     is_init = false
-        //   }
-        // });
-        // setTimeout(() => {
-        // 	mp3Audio.play();
-
-        // }, 1000)
-        // 播放音乐
-        // var audio = document.createElement('audio')
-        // audio.src = response.data.body.musicUrl || ''
-        // // audio.src = 'https://krpano.com/panos/xmas/ding_dong_merrily_on_high.mp3'
-        // audio.autoplay = true
-        // audio.controls = true
-        // audio.loop = true
-        // audio.id = 'audio'
-        // setTimeout(() => {
-        // 	audio.play();
-        // }, 1000)
-        console.log('response');
-        console.log(response);
-      })
-      .catch(function (error: any) {
+  getVrDetail() {
+    Api.getVrDetail({ get_key: this.vr_obj.sceneResourceId }).then((res: any) => {
+      this.scene_list = res.body.krpanoSceneList
+      this.vr_info = res.body || {}
+      let arr = JSON.parse(res.body.summaryContent)
+      this.rich_text = arr.filter((item: { type: number; }) => item.type == 2)
+      if (!this.rich_text.length) {
+        this.rich_text = [{ "type": 2, "cont": "<p>无数据</p>" }]
+      }
+    })
+      .catch((error: any) => {
         console.log(error);
       });
+    // 设置分享相关
+    let option = {
+      title: this.vr_info.title, // 分享标题
+      // desc: , // 分享描述
+      link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      imgUrl: this.vr_info.cover, // 分享图标
+    }
+    window.wx.ready(() => {
+      window.wx.updateTimelineShareData(option);
+      window.wx.updateAppMessageShareData(option);
+    });
   }
   //  点赞
   zanImg() {
@@ -125,11 +102,26 @@ export default class About extends Vue {
   }
   //  分享
   shareImg() {
-    Api.addShare(this.vr_obj).then((res: any) => {
-      console.log(res)
-      this.getShare()
-    })
-    alert('界面待对接!')
+    if (!commFnc.getIsWxClient()) {
+      Toast({
+        duration: 1500,
+        message: '您好,当前不在微信环境内!'
+      });
+      return
+    }
+    // window.wx && window.wx.updateAppMessageShareData({
+    //   title: this.scene_list[this.current_scene].title, // 分享标题
+    //   desc: this.scene_list[this.current_scene].name, // 分享描述
+    //   link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    //   imgUrl: this.scene_list[this.current_scene].thumburl, // 分享图标
+    //   success: () => {
+    //     // 设置成功
+    //     Api.addShare(this.vr_obj).then((res: any) => {
+    //       console.log(res)
+    //       this.getShare()
+    //     })
+    //   }
+    // })
   }
   //  查询收藏分享次数
   getShare() {
@@ -145,6 +137,7 @@ export default class About extends Vue {
   }
   // 场景切换
   changeScene(name: string, current_scene: number) {
+    console.log(name)
     this.current_scene = current_scene
     this.krpanoDoc.loadscene(name);
   }
@@ -152,8 +145,14 @@ export default class About extends Vue {
   showDetail(stu: boolean) {
     this.show_detail = stu;
   }
-  musicImg(){
-    let mp3Audio:any = document.getElementById('mp3Audio')
-    mp3Audio.play()
+  musicImg() {
+    let mp3Audio: any = document.getElementById('mp3Audio')
+    if (this.is_play) {
+      mp3Audio.pause()
+      this.is_play = false;
+    } else {
+      mp3Audio.play()
+      this.is_play = true;
+    }
   }
 }
