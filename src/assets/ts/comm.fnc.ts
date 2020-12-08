@@ -265,5 +265,10 @@ export default {
     let str = txt;
     str = str.substr(0, len) + '...';
     return str;
+  },
+  // 获取是否为微信环境
+  getIsWxClient() {
+    let ua = navigator.userAgent.toLowerCase();
+    return ua.indexOf('micromessenger') != -1
   }
 }
