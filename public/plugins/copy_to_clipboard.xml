@@ -1,0 +1,12 @@
+<krpano>
+	
+	<action name="copy_to_clipboard" type="Javascript"><![CDATA[
+		var textarea = document.createElement('textarea');
+		textarea.value = args[1];
+		document.body.appendChild(textarea);
+		textarea.select();
+		document.execCommand('copy');
+		document.body.removeChild(textarea);
+	]]></action>
+	
+</krpano>
