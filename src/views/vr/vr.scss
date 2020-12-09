@@ -60,7 +60,7 @@
       color: #fff;
 
       &.is-ipx {
-        padding-bottom: 36px;
+        padding-bottom: 45px;
       }
 
       .b-top {
@@ -178,15 +178,17 @@
   .van-tabs__wrap {
     height: 130px;
 
-    .van-tab {
-      width: 164px;
+    .van-tabs__nav {
+      display: flex;
+      justify-content: center;
 
-      &:last-child {
-        display: none;
-      }
+      .van-tab {
+        flex: inherit;
+        margin: 0 8px;
 
-      .van-tab__text {
-        position: relative;
+        .van-tab__text {
+          position: relative;
+        }
       }
     }
 
@@ -198,14 +200,14 @@
       background-color: unset;
 
       .s-img {
-        width: 100%;
+        width: 154px;
         height: 124px;
       }
 
       .s-title {
         width: 100%;
         height: 38px;
-        line-height:38px;
+        line-height: 38px;
         text-align: center;
         position: absolute;
         bottom: 0;

@@ -48,7 +48,7 @@
           v-html="rich_text[0] && rich_text[0].cont"
         ></div>
         <div class="scene-wrap">
-          <van-tabs scrollspy>
+          <van-tabs swipe-threshold="4">
             <van-tab
               v-for="(item, i) in scene_list"
               :key="i"
@@ -57,13 +57,14 @@
                 <img
                   class="s-img"
                   :src="item.thumburl"
-                  @click="changeScene(item.name, i)"
+              @click="changeScene(item.name, i)"
+                  
                   alt=""
                 />
                 <div class="s-title">{{ item.name }}</div>
               </template>
             </van-tab>
-            <van-tab title-style="display:none"> </van-tab>
+            <!-- <van-tab title-style="display:none"> </van-tab> -->
           </van-tabs>
           <!-- <div
             v-for="(item, i) in scene_list"

@@ -137,6 +137,7 @@ export default class About extends Vue {
   }
   // 场景切换
   changeScene(name: string, current_scene: number) {
+    name = `scene_${name}_${current_scene}`
     console.log(name)
     this.current_scene = current_scene
     this.krpanoDoc.loadscene(name);

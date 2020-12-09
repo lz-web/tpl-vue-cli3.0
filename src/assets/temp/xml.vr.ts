@@ -114,6 +114,12 @@ export default {
 			loadscene(get(startscene), null, MERGE);
 			if(startactions !== null, startactions() );
 		</action>
+		<autorotate enabled="true"
+			waittime="0.0"
+			speed="30.0"
+			horizon="0.0"
+			/>
+		<events name="onautorotateevents" keep="true" onautorotateoneround="nextscene()"/>
 		${scene}
 	</krpano>`
 	}

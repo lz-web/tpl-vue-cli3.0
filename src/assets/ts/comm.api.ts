@@ -11,7 +11,7 @@ export default {
     };
     Api.registerWXSDK(params).then((res: any) => {
       window.wx.config({
-        debug: true,
+        debug: false,
         appId: res.AppId,
         timestamp: res.TimeStamp,
         nonceStr: res.NonceStr,
