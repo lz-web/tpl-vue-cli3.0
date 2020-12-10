@@ -47,22 +47,22 @@
           class="desc hui_text_point3"
           v-html="rich_text[0] && rich_text[0].cont"
         ></div>
-        <div class="scene-wrap">
+        <div :class="['scene-wrap',scene_list.length < 4 ? 'tab-c' : '']">
           <van-tabs swipe-threshold="4">
             <van-tab
               v-for="(item, i) in scene_list"
               :key="i"
             >
               <template #title>
+                <img v-if="item.is_clicked && current_scene != i" src="../../assets/img/vr/ed.png" alt="" class="s-ed">
+                <div class="s-title">{{ item.name }}</div>
+                <div @click="changeScene(item.name, i)" v-if="current_scene != i" class="s-bc"></div>
                 <img
                   class="s-img"
                   :src="item.thumburl"
-              @click="changeScene(item.name, i)"
-                  
+                  @click="changeScene(item.name, i)"
                   alt=""
                 />
-                <img v-if="item.is_clicked" src="../../assets/img/vr/ed.png" alt="" class="s-ed">
-                <div class="s-title">{{ item.name }}</div>
               </template>
             </van-tab>
           </van-tabs>
