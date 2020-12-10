@@ -54,8 +54,8 @@
 
 	<!-- path to the scrollarea plugin -->
 	<combobox_scrollareaplugin
-		url.html5="%VIEWER%/plugins/scrollarea.js"
-		url.flash="%VIEWER%/plugins/scrollarea.swf"
+		url.html5="./plugins/scrollarea.js"
+		url.flash="./plugins/scrollarea.swf"
 		/>
 
 	<!-- core internal layer styles -->

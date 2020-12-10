@@ -1,5 +1,5 @@
 <template>
-  <div class="vr-wrap">
+  <div class="vr-wrap" id="vrWrap">
     <div id="pano" style="width: 100%; height: 100%"></div>
     <div class="vr-c">
       <img :src="vr_info.logoUrl" alt="" class="logo">
@@ -61,10 +61,10 @@
                   
                   alt=""
                 />
+                <img v-if="item.is_clicked" src="../../assets/img/vr/ed.png" alt="" class="s-ed">
                 <div class="s-title">{{ item.name }}</div>
               </template>
             </van-tab>
-            <!-- <van-tab title-style="display:none"> </van-tab> -->
           </van-tabs>
           <!-- <div
             v-for="(item, i) in scene_list"

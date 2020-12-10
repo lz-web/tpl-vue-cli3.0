@@ -14,7 +14,7 @@ export default {
 					<layer name="skin_scroll_container">
 						<layer name="skin_map_container">
 							<layer name="skin_map" type="container">
-								<layer name="skin_map_scrollarea" url="/plugins/scrollarea.js" align="center" width="100%" height="100%">
+								<layer name="skin_map_scrollarea" url="./plugins/scrollarea.js" align="center" width="100%" height="100%">
 									<layer name="skin_map_image" url="corfumap.jpg" align="center" onloaded="copy(layer[skin_map_scrollarea].width, width); copy(layer[skin_map_scrollarea].height, height); layer[skin_map_scrollarea].update();">
 										<layer name="mapspot1" style="mapspot" x="16.93%" y="14.80%" linkedscene="scene_canaldemure5" />
 										<layer name="mapspot2" style="mapspot" x="52.34%" y="14.50%" linkedscene="scene_kalamaki-strand" />
