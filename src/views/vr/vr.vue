@@ -10,7 +10,7 @@
           src="../../assets/img/vr/music.png"
           alt=""
         />
-        <audio id="mp3Audio" class="hui_hidden" :src="vr_info.musicUrl"></audio>
+        <audio id="mp3Audio" autoplay="autoplay"  class="hui_hidden" :src="vr_info.musicUrl"></audio>
       </div>
       <div class="right">
         <img

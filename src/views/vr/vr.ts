@@ -36,29 +36,29 @@ export default class About extends Vue {
   }
 
   mp3Auto() {
-    //  手机端交互
-    let vr_id: any = document.getElementById("vrWrap")
-    vr_id.addEventListener("touchend", () => {
+
+    // document.addEventListener("WeixinJSBridgeReady", () => {
+    //   alert('WeixinJSBridgeReady')
+    //   this.musicImg()
+    // }, false);
+    // //  手机端交互
+    // let vr_id: any = document.getElementById("vrWrap")
+    // vr_id.addEventListener("touchend", () => {
+    //   if (this.mp3_init) {
+    //   }
+    // });
+
+    document.addEventListener("WeixinJSBridgeReady", () => {
       if (this.mp3_init) {
         this.musicImg()
       }
-    });
-    //  pc交互
-    vr_id.addEventListener("click", () => {
-      if (this.mp3_init) {
-        this.musicImg()
-      }
-    });
+    }, false);
   }
 
   mounted() {
     this.mp3Auto()
     this.doc_id = document.getElementById('pano')
     // 默认自动播放
-    // let mp3Audio: any = document.getElementById('mp3Audio')
-    // mp3Audio.play && mp3Audio.play()
-    // this.is_play = true
-
     this.getVrDetail()
     this.getVrXml()
   }
@@ -84,7 +84,7 @@ export default class About extends Vue {
   }
   getVrDetail() {
     Api.getVrDetail({ get_key: this.vr_obj.sceneResourceId }).then((res: any) => {
-      res.body.krpanoSceneList.map((item: { is_clicked: boolean; }) => {item.is_clicked = false})
+      res.body.krpanoSceneList.map((item: { is_clicked: boolean; }) => { item.is_clicked = false })
       this.scene_list = res.body.krpanoSceneList
       this.vr_info = res.body || {}
       let arr = JSON.parse(res.body.summaryContent)
@@ -163,8 +163,11 @@ export default class About extends Vue {
     this.show_detail = stu;
   }
   musicImg() {
-    this.mp3_init = false
     let mp3Audio: any = document.getElementById('mp3Audio')
+    if (this.mp3_init) {
+      mp3Audio.touchstart = true
+      this.mp3_init = false
+    }
     if (this.is_play) {
       mp3Audio.pause()
       this.is_play = false;
