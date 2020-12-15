@@ -6,14 +6,8 @@ const productionGzipExtensions = ['js', 'css', 'ts'];
 const resolve = dir => {
     return path.join(__dirname, dir)
 }
-let dist_url;// 打包生成的生产环境构建文件的目录;
-if (process.env.VUE_APP_ENV === 'test') {
-    dist_url = 'test_dist'
-} else if(process.env.VUE_APP_ENV === 'stage'){
-    dist_url = 'stage_dist'
-} else {
-    dist_url = 'dist_' + process.env.VUE_APP_ENV;
-}
+let dist_url; // 打包生成的生产环境构建文件的目录;
+dist_url = 'dist_' + process.env.VUE_APP_ENV;
 
 // cdn引入
 const isProduction = process.env.NODE_ENV === 'production';
@@ -64,13 +58,13 @@ module.exports = {
             .set('@c', resolve('src/components'))
             .set('@v', resolve('src/views'))
         // 生产环境注入cdn
-        if (isProduction) {
-            config.plugin('html')
-                .tap(args => {
-                    args[0].cdn = cdn;
-                    return args;
-                });
-        }
+        // if (isProduction) {
+        //     config.plugin('html')
+        //         .tap(args => {
+        //             args[0].cdn = cdn;
+        //             return args;
+        //         });
+        // }
     },
     css: {
         // requireModuleExtension: false, // 启用 CSS modules
