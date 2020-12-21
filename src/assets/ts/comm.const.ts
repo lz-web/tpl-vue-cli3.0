@@ -2,6 +2,7 @@
 
 import code_obj from './comm.code';
 import commFnc from '@/assets/ts/comm.fnc';
+
 const CONST = {
     node_env: process.env.NODE_ENV,
     code_obj, // 码值表
@@ -12,6 +13,16 @@ const CONST = {
     // api_url: process.env.VUE_APP_api_url // 接口请求地址
     api_url: process.env.VUE_APP_api_url // 接口请求地址
     // api_url: 'http://10.181.154.71:14270' // dt
+}
+let host = window.location.host;
+if(host.indexOf('.qa.') != -1){
+    CONST.api_url = 'https://tcmobileapi.qa.17usoft.com'
+}else if(host.indexOf('.t.') != -1){
+    CONST.api_url = 'https://tcmobileapi.t.17usoft.com'
+}else if(host.indexOf(':808') != -1){ // 本地
+    CONST.api_url = 'https://tcmobileapi.qa.17usoft.com'
+}else{
+    CONST.api_url = 'https://tcmobileapi.17usoft.com'
 }
 
 export default CONST; 
